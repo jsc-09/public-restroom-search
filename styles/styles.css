@@ -20,14 +20,32 @@ h3 {
 h4 {
     font-family: 'Spartan', sans-serif;
     font-size: 120%;
-
 }
 
 p {
     font-family: 'Spartan', sans-serif;
-    font-size: 120%;
+    font-size: 100%;
+    line-height: 80%;
+
+}
+
+p.showmore {
+    font-size: 70%;
 }
 
 img {
     width: 4em;
+}
+
+@media screen and (max-width: 768px) {
+    .restroomsearch {
+        display: none;
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+    .modal {
+        display: none;
+    }
 }

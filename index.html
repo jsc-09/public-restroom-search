@@ -23,11 +23,14 @@
     </div>
 
     <div class="columns is-full m-2">
-        <!--RESTROOM SEARCH / LIST CONTAINER-->
-        <div class="column is-one-third has-background-primary mr-1">
-            <h2>FORM GOES HERE</h2>
+        <!--RESTROOM SEARCH / LIST CONTAINER / DESKTOP -->
+        <div class="column is-one-third has-background-primary m-1 restroomsearch">
             <div class="field block">
-                <input class="input is-primary is-normal" type="text" placeholder="Enter Address">
+                <h2>Find the nearest public restrooms</h2>
+
+                <input class="input is-primary is-normal" type="text" placeholder="Your Location">
+                <button class="button is-primary is-light is-fullwidth mt-2">Search</button>
+                <!--OPTIONAL CHECKBOXES
                 <label class="checkbox">
                     <input type="checkbox">Accessibility
                 </label>
@@ -37,11 +40,27 @@
                 <label class="checkbox">
                     <input type="checkbox">Changing Table
                 </label>
+            -->
             </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="content">
+                        <h3>Restroom Name</h3>
+                        <p>Address</p>
+                        <p>Distance Away</p>
+                        <img class="image is-24x24" src="images/accessible-icon-brands.svg">
+                        <p class="has-text-centered showmore">Expand for details +</p>
+                    </div>
+                </div>
+            </div>
+            <button class="button is-primary is-light mt-2 is-hovered ">Show More Restrooms</button>
         </div>
 
+
+
         <!--MAP CONTAINER-->
-        <div class="column has-background-info ml-1">
+        <div class="column has-background-info m-1">
             <h2>MAP GOES HERE</h2>
         </div>
 
@@ -52,6 +71,13 @@
 
     </div>
 
+    <div class="modal is-active" id="mobile-search">
+        <div class="field block">
+            <h2>Find the nearest public restrooms</h2>
+            <input class="input is-primary is-normal" type="text" placeholder="Your Location">
+            <button class="button is-primary is-light is-fullwidth mt-2">Search</button>
+        </div>
+    </div>
 
 
 </body>
