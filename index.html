@@ -2,9 +2,14 @@
 <html lang="en">
 
 <head>
+    <title>Restroom Hunters</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <script src="https://kit.fontawesome.com/59bb843925.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,16 +20,17 @@
     <link rel="stylesheet" href="styles/styles.css">
     <script src="js/scripts.js" defer></script>
     <script src="js/script.js" defer></script>
-    <title>Restroom Hunters</title>
 </head>
-
 <body>
+    <div id='map' style='width: 98vw; height: 98vh;'></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+    <script src="js/mapbox_api.js"></script>
     <!--NAV BAR/HEADER-->
     <div class=" navbar-brand notification is-primary is-light"><img src="images/toiletpaper.png">
         <h1>RESTROOM HUNTERS</h1>
-    </div>
-
-    <div class="columns is-full m-2">
+  </div>
+   <div class="columns is-full m-2">
         <!--RESTROOM SEARCH / LIST CONTAINER / DESKTOP -->
         <div class="column is-one-third has-background-primary m-1 restroomsearch">
             <div class="field block">
@@ -58,24 +64,12 @@
             </div>
             <button class="button is-primary is-light mt-2 is-hovered ">Show More Restrooms</button>
         </div>
-
-
-
+      
         <!--MAP CONTAINER-->
         <div class="column has-background-info m-1">
             <h2>MAP GOES HERE</h2>
         </div>
-
-
-
-
-
-
     </div>
-
-
-
-
 
     <div id="modal" class="modal">
         <div class="modal-background"></div>
@@ -83,7 +77,6 @@
             <div class="box">
                 <div class="field block">
                     <h2>Find the nearest public restrooms</h2>
-
                     <input class="input is-primary is-normal" type="text" placeholder="Your Location">
                     <button class="button is-primary is-light is-fullwidth mt-2">Search</button>
                 </div>
@@ -91,10 +84,5 @@
         </div>
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
-
-
-
-
 </body>
-
 </html>
