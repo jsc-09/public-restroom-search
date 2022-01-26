@@ -28,6 +28,9 @@ function getApi() {
         var locationName = document.createElement("h3");
         var city = document.createElement("p");
         var icons = document.createElement("i");
+        let distanceAway = data[i].distance;
+
+      
 
         if (data[i].accessible === true) {
           icons.append("Wheel chairs accessible")
@@ -41,10 +44,22 @@ function getApi() {
                     <div class="card-content has-background-light mt-1">
                     <div class="content">
                         <h4>${data[i].name}</h4>
+                        <div class="row columns">
+                        <div class="column">
                         <p>${data[i].street + ", " + data[i].city}</p>
-                        <p>${"Distance Away: " + Math.round((data[i].distance * 100) / 100) + ' miles'}
+                        <p>${"Distance Away: " + Math.round(distanceAway*100)/100 + ' miles'}</p>
+                        </div>
+                        <div class="column">
+                        <p>ICONS GO HERE</p>
+
+                        </div>
+
+
+                        </div>
+                        <div class="row">
                         <p>${"<strong>Directions: </strong> " + data[i].directions}</p>
                         <p>${"<strong>Comments: </strong> " + data[i].comments}</p>
+                        </div>
                     </div>
                     </div>
         `
