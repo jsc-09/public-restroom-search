@@ -1,0 +1,51 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Lemon&family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+h1 {
+    font-family: 'Lemon', cursive;
+    font-size: 200%;
+}
+
+h2 {
+    font-family: 'Spartan', sans-serif;
+    font-size: 160%;
+
+}
+
+h3 {
+    font-family: 'Spartan', sans-serif;
+    font-size: 140%;
+}
+
+h4 {
+    font-family: 'Spartan', sans-serif;
+    font-size: 120%;
+}
+
+p {
+    font-family: 'Spartan', sans-serif;
+    font-size: 100%;
+    line-height: 80%;
+
+}
+
+p.showmore {
+    font-size: 70%;
+}
+
+img {
+    width: 4em;
+}
+
+@media screen and (max-width: 768px) {
+    .restroomsearch {
+        display: none;
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+    .modal {
+        display: none;
+    }
+}
