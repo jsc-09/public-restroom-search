@@ -19,6 +19,6 @@ window.addEventListener('resize', function(){
     }
     else {
             //  $('#mobile-search').modal("hide");
-            $('.modal').classList.remove('is-active')
+            $('.modal').classList.removeClass('is-active')
     }
 });

@@ -20,12 +20,11 @@
     <link rel="stylesheet" href="styles/styles.css">
     <script src="js/scripts.js" defer></script>
     <script src="js/script.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" defer></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js" defer></script>
+    <script src="js/mapbox_api.js" defer></script>
 </head>
 <body>
-    <div id='map' style='width: 98vw; height: 98vh;'></div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
-    <script src="js/mapbox_api.js"></script>
     <!--NAV BAR/HEADER-->
     <div class=" navbar-brand notification is-primary is-light"><img src="images/toiletpaper.png">
         <h1>RESTROOM HUNTERS</h1>
@@ -37,7 +36,7 @@
                 <h2>Find the nearest public restrooms</h2>
 
                 <input class="input is-primary is-normal" type="text" placeholder="Your Location">
-                <button class="button is-primary is-light is-fullwidth mt-2">Search</button>
+                <button class="button is-primary is-light is-fullwidth mt-2 fetch-button">Search</button>
                 <!--OPTIONAL CHECKBOXES
                 <label class="checkbox">
                     <input type="checkbox">Accessibility
@@ -51,23 +50,14 @@
             -->
             </div>
 
-            <div class="card">
-                <div class="card-content">
-                    <div class="content">
-                        <h3>Restroom Name</h3>
-                        <p>Address</p>
-                        <p>Distance Away</p>
-                        <img class="image is-24x24" src="images/accessible-icon-brands.svg">
-                        <p class="has-text-centered showmore">Expand for details +</p>
-                    </div>
-                </div>
+            <div class="card has-background-primary" id="restroomCard">
             </div>
-            <button class="button is-primary is-light mt-2 is-hovered ">Show More Restrooms</button>
+      <!--      <button class="button is-primary is-light mt-2 is-hovered ">Show More Restrooms</button>-->
         </div>
       
         <!--MAP CONTAINER-->
-        <div class="column has-background-info m-1">
-            <h2>MAP GOES HERE</h2>
+        <div class="column is-two-third has-background-info m-1">
+            <div id='map' class="mapsize"></div>
         </div>
     </div>
 

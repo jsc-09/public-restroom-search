@@ -7,8 +7,8 @@ const geocoder = new MapboxGeocoder({
     mapboxgl: mapboxgl
 })
 
-// navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {enableHighAccuracy: true});
-setupMap([-117.379186, 33.194634]);
+ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {enableHighAccuracy: true});
+//setupMap([-117.379186, 33.194634]);
 setGeoCoder();
 function setupMap(center, array) {
     map = new mapboxgl.Map({

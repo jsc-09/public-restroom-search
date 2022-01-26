@@ -24,7 +24,7 @@ h4 {
 
 p {
     font-family: 'Spartan', sans-serif;
-    font-size: 100%;
+    font-size: 80%;
     line-height: 80%;
 
 }
@@ -35,6 +35,11 @@ p.showmore {
 
 img {
     width: 4em;
+}
+
+.mapsize {
+    width: 63vw;
+    height: 100%;
 }
 
 @media screen and (max-width: 768px) {

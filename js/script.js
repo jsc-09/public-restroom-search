@@ -1,12 +1,11 @@
-
-var fetchButton = document.querySelector("#fetch-button");
+var fetchButton = document.querySelector(".fetch-button");
 var dataField = document.querySelector(".data");
 // var icons = document.querySelector(".icon");
 var locationArray = [
-    {
-        "lat": "",
-        "long": ""
-    }
+  {
+    "lat": "",
+    "long": ""
+  }
 ];
 
 // console.log("hello world");
@@ -22,34 +21,52 @@ function getApi() {
     })
     .then(function (data) {
       console.log(data);
-      for (var i = 0; i < data.length; i++) {
+      let restroomInfo = document.getElementById('restroomCard');
+      restroomInfo.innerHTML = "";
+      for (var i = 0; i < 5; i++) {
+        console.log(data[i])
         var locationName = document.createElement("h3");
         var city = document.createElement("p");
         var icons = document.createElement("i");
 
-        
         if (data[i].accessible === true) {
-           icons.append("Wheel chairs accessible")
+          icons.append("Wheel chairs accessible")
         } else if (data[i].changing_table === true) {
-            icons.append("Changin table")
+          icons.append("Changing table")
         } else if (data[i].unisex === true) {
-            icons.append("Unisex")
+          icons.append("Unisex")
         }
+        
+        let cardmarkup = `
+                    <div class="card-content has-background-light mt-1">
+                    <div class="content">
+                        <h4>${data[i].name}</h4>
+                        <p>${data[i].street + ", " + data[i].city}</p>
+                        <p>${"Distance Away: " + Math.round((data[i].distance * 100) / 100) + ' miles'}
+                        <p>${"<strong>Directions: </strong> " + data[i].directions}</p>
+                        <p>${"<strong>Comments: </strong> " + data[i].comments}</p>
+                    </div>
+                    </div>
+        `
 
         locationName.textContent = data[i].name;
         city.textContent = data[i].city;
 
-        dataField.append(locationName);
-        dataField.append(city);
+        //        dataField.append(locationName);
+        //        dataField.append(city);
 
         // locationArray.lat = data[i].latitude;
         // locationArray.long = data[i].longitude;
         // console.log(locationArray);
 
-        let locationObject = {'lat': data[i].latitude, 'long': data[i].longitude};
-            locationArray.push(locationObject)
+        let locationObject = { 'lat': data[i].latitude, 'long': data[i].longitude };
+        locationArray.push(locationObject)
+
+        restroomInfo.innerHTML += cardmarkup;
+
       }
       console.log(locationArray);
+
     });
 }
 
