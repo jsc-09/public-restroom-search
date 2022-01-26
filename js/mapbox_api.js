@@ -7,8 +7,8 @@ const geocoder = new MapboxGeocoder({
     mapboxgl: mapboxgl
 })
 
-// navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {enableHighAccuracy: true});
-setupMap([-117.379186, 33.194634]);
+navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {enableHighAccuracy: true});
+// setupMap([-117.379186, 33.194634]);
 setGeoCoder();
 function setupMap(center, array) {
     map = new mapboxgl.Map({
@@ -28,11 +28,11 @@ function createMarkers(array) {
     }
 }
 function successLocation(position) {
-    setupMap([-117.379186, 33.194634]);
+    setupMap(position);
     getApi();
 }
 function errorLocation() {
-    setupMap([-2.34, 53.48]);
+    setupMap([-117.379186, 33.194634]);
 }
 function getApi() {
     var requestUrl =
