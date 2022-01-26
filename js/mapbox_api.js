@@ -2,9 +2,14 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic2xhdGVybWNhcmRsZSIsImEiOiJja3lxNHJ6aWowZ2k1M
 
 var locationArray = [];
 let map;
+const geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl
+})
 
-navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {enableHighAccuracy: true});
-
+// navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {enableHighAccuracy: true});
+setupMap([-117.379186, 33.194634]);
+setGeoCoder();
 function setupMap(center, array) {
     map = new mapboxgl.Map({
         container: 'map',
@@ -51,7 +56,12 @@ function getApi() {
         createMarkers(locationArray);
       });
   }
-  
+function setGeoCoder() {
+    map.addControl(geocoder);
+}
+geocoder.on('result', function(e) {
+    console.log(e.result.center[0]);
+})
   
   
   
