@@ -55,7 +55,7 @@ function getApi() {
                           </div>
                         <div class="row">
                           <p>${"<strong>Directions: </strong> " + data[i].directions}</p>
-                          <p>${"<strong>Comments: </strong> " + data[i].comments}</p>
+                          <p>${"<strong>Comments: </strong> " + data[i].comment}</p>
                         </div>
                     </div>
                     </div>
