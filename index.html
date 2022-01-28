@@ -7,7 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
+        type="text/css">
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
     <script src="https://kit.fontawesome.com/59bb843925.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
@@ -15,29 +17,38 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Lemon&family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bangers&family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
     <script src="js/scripts.js" defer></script>
     <script src="js/script.js" defer></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" defer></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" defer></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"
+        defer></script>
     <script src="js/mapbox_api.js" defer></script>
 </head>
+
 <body>
     <!--NAV BAR/HEADER-->
-    <div class=" navbar-brand notification is-primary is-light"><img src="images/toiletpaper.png">
+    <div class="navbar-brand notification custom-navbar is-justify-content-center	"><img src="images/toiletpaper.png">
         <h1>RESTROOM HUNTERS</h1>
-  </div>
-   <div class="columns is-full m-2">
+    </div>
+    <div class="columns is-full m-2">
         <!--RESTROOM SEARCH / LIST CONTAINER / DESKTOP -->
-        <div class="column is-one-third has-background-primary m-1 restroomsearch">
+        <div class="column is-one-third m-1 restroomsearch custom-sidebar">
             <div class="field block">
-                <h2>Find the nearest public restrooms</h2>
+                <h2 class="mb-1">Find the nearest public restrooms</h2>
 
+<<<<<<< HEAD
                 <input class="input is-primary is-normal" type="text" placeholder="Your Location">
                 <button class="button is-primary is-light is-fullwidth mt-2 fetch-button">Search</button>
                 <!-- OPTIONAL CHECKBOXES -->
+=======
+                <input class="input is-normal custom-search" type="text" placeholder="Your Location">
+                <button class="button is-fullwidth mt-2 fetch-button">Search</button>
+                <!--OPTIONAL CHECKBOXES
+>>>>>>> abb371d0b2e96a4a1b6724d9c7cc09400ea3a531
                 <label class="checkbox">
                     <input id="ADA" type="checkbox">ADA</label>
                 </label>
@@ -48,29 +59,36 @@
                     <input id="changingTable" type="checkbox">Changing Table</label>
                 </label>
             </div>
+<<<<<<< HEAD
             <div class="card has-background-primary" id="restroomCard">
+=======
+
+            <div class="card custom-card-container" id="restroomCard">
+>>>>>>> abb371d0b2e96a4a1b6724d9c7cc09400ea3a531
             </div>
-      <!--      <button class="button is-primary is-light mt-2 is-hovered ">Show More Restrooms</button>-->
+            <!--      <button class="button is-primary is-light mt-2 is-hovered ">Show More Restrooms</button>-->
         </div>
-      
+
         <!--MAP CONTAINER-->
-        <div class="column is-two-third has-background-info m-1">
+        <div class="column is-two-third m-1 custom-map">
             <div id='map' class="mapsize"></div>
         </div>
     </div>
 
-    <div id="modal" class="modal">
-        <div class="modal-background"></div>
+    <div id="modal custom-modal-container" class="modal">
+        <div class="modal-background custom-modal-background"></div>
         <div class="modal-content">
             <div class="box">
                 <div class="field block">
-                    <h2>Find the nearest public restrooms</h2>
-                    <input class="input is-primary is-normal" type="text" placeholder="Your Location">
-                    <button class="button is-primary is-light is-fullwidth mt-2 fetch-button">Search</button>
+                    <div class="modal-header"><img src="images/toiletpaper.png"><h1>RESTROOM HUNTERS</h1></div>
+                    <h2 id="modal-h2">Find the nearest public restrooms</h2>
+                    <input class="input custom-search is-normal" type="text" placeholder="Your Location">
+                    <button class="button is-fullwidth mt-2 fetch-button">Search</button>
                 </div>
             </div>
         </div>
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
 </body>
+
 </html>
