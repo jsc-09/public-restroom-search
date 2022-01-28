@@ -19,11 +19,22 @@ function setupMap(center, array) {
         });
     const nav = new mapboxgl.NavigationControl();
     map.addControl(nav);
+    map.addControl(geocoder);
+    const el = document.createElement('div');
+    el.id = 'marker';
+    const popup = new mapboxgl.Popup({ offset: 25 }).setText('Construction on the Washington Monument began in 1848.')
+    new mapboxgl.Marker(el)
+        .setLngLat([-117.379186, 33.194634])
+        .setPopup(popup) // sets a popup on this marker
+        .addTo(map);
+    // const marker = new mapboxgl.Marker().setLngLat([-117.379186, 33.194634]);
+    //     marker.addTo(map);
 }
 function createMarkers(array) {
     for (let i = 0; i < array.length; i++) {
         const marker = new mapboxgl.Marker()
-        .setLngLat([array[i].long, array[i].lat])
+        .setLngLat([-117.379186, 33.194634])
+        .setPopup(popup)
         .addTo(map);
     }
 }
@@ -40,6 +51,9 @@ function setGeoCoder() {
 geocoder.on('result', function(e) {
     console.log(e.result.center[0]);
 })
+$('#map').on('click', function(e) {
+    console.log(e.target);
+});
   
   
   
