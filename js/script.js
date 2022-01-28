@@ -1,19 +1,5 @@
-// grab variables
-var fetchButton = document.querySelector(".button");
-var dataField = document.querySelector(".content");
-var showMore = document.querySelector(".showMore");
-var icons = document.querySelector(".images");
-var locationName = document.getElementsByTagName("h3");
-var address = document.getElementsByTagName("p");
-var icons = document.getElementById("icons");
-
-// lat lon array
-var locationArray = [
-  {
-    lat: "",
-    long: "",
-  },
-];
+var fetchButton = document.querySelector(".fetch-button");
+var locationArray = [];
 
 // fetch request
 function getApi() {
@@ -25,41 +11,66 @@ function getApi() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
-     
-      for (var i = 0; i < data.length; i++) {
-        locationName = data[i].name;
-        address = data[i].street;
-        distance = data[i].distance;
-        accessible = data[i].accessible;
-        gender = data[i].unisex;
-        baby = data[i].changing_table;
-        console.log(locationName, address, distance, accessible, baby, gender);
+      let restroomInfo = document.getElementById('restroomCard');
+      restroomInfo.innerHTML = "";
+      let filteredResults = filterResults(data);
+      for (var i = 0; i < filteredResults.length; i++) {
+        var locationName = document.createElement("h3");
+        var city = document.createElement("p");
+        var icons = document.createElement("i");
+        let distanceAway = data[i].distance;
 
-        if (data[i].accessible === true) {
+        if (filteredResults[i].accessible === true) {
             var accessible = "fab fa-accessible-icon";
-          } if (data[i].changing_table === true) {
+          } if (filteredResults[i].changing_table === true) {
             var baby = " fas fa-baby";
-          } if (data[i].unisex === true) {
+          } if (filteredResults[i].unisex === true) {
             var gender = " fas fa-transgender-alt";
           }
 
-        var html = `<div class="card">
-          <div class="card-content">
-          <div class="content">
-          <h3>${locationName}</h3>
-          <p id="address">${address}</p>
-          <p id="distance">${distance}</p>
-          <i id="icons" class="${accessible}"></i>
+        let cardmarkup = `
+                    <div class="card-content custom-card mt-1">
+                    <div class="content">
+                        <h4>${filteredResults[i].name}</h4>
+                        <div class="row columns">
+                        <div class="column">
+                        <p>${filteredResults[i].street + ", " + filteredResults[i].city}</p>
+                        <p>${"Distance Away: " + Math.round(distanceAway*100)/100 + ' miles'}</p>
+                        </div>
+                        <div class="column">
+                        <i id="icons" class="${accessible}"></i>
           <i id="icons" class="${baby}"></i>
           <i id="icons" class="${gender}"></i>`
+
+                        </div>
+
+
+                        </div>
+                        <div class="row">
+                        <p>${"<strong>Directions: </strong> " + filteredResults[i].directions}</p>
+                        <p>${"<strong>Comments: </strong> " + filteredResults[i].comments}</p>
+                        </div>
+                    </div>
+                    </div>
+        `
+
+        locationName.textContent = filteredResults[i].name;
+        city.textContent = filteredResults[i].city;
+
+        //        dataField.append(locationName);
+        //        dataField.append(city);
 
           console.log(html);
           dataField.innerHTML += html;
 
+        let locationObject = { 'lat': filteredResults[i].latitude, 'long': filteredResults[i].longitude };
+        locationArray.push(locationObject)
+
+        restroomInfo.innerHTML += cardmarkup;
+
       }
-      return html;
-      
+      // console.log(locationArray);
+
     });
 }
 
