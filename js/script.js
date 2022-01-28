@@ -1,18 +1,22 @@
+// grab variables
+var fetchButton = document.querySelector(".button");
+var dataField = document.querySelector(".content");
+var showMore = document.querySelector(".showMore");
+var icons = document.querySelector(".images");
+var locationName = document.getElementsByTagName("h3");
+var address = document.getElementsByTagName("p");
+var icons = document.getElementById("icons");
 
-var fetchButton = document.querySelector("#fetch-button");
-var dataField = document.querySelector(".data");
-// var icons = document.querySelector(".icon");
+// lat lon array
 var locationArray = [
-    {
-        "lat": "",
-        "long": ""
-    }
+  {
+    lat: "",
+    long: "",
+  },
 ];
 
-// console.log("hello world");
-
+// fetch request
 function getApi() {
-  // console.log("hello world");
   var requestUrl =
     "https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=1&per_page=10&offset=0&lat=33.194634&lng=-117.379186";
 
@@ -22,35 +26,42 @@ function getApi() {
     })
     .then(function (data) {
       console.log(data);
+     
       for (var i = 0; i < data.length; i++) {
-        var locationName = document.createElement("h3");
-        var city = document.createElement("p");
-        var icons = document.createElement("i");
+        locationName = data[i].name;
+        address = data[i].street;
+        distance = data[i].distance;
+        accessible = data[i].accessible;
+        gender = data[i].unisex;
+        baby = data[i].changing_table;
+        console.log(locationName, address, distance, accessible, baby, gender);
 
-        
         if (data[i].accessible === true) {
-           icons.append("Wheel chairs accessible")
-        } else if (data[i].changing_table === true) {
-            icons.append("Changin table")
-        } else if (data[i].unisex === true) {
-            icons.append("Unisex")
-        }
+            var accessible = "fab fa-accessible-icon";
+          } if (data[i].changing_table === true) {
+            var baby = " fas fa-baby";
+          } if (data[i].unisex === true) {
+            var gender = " fas fa-transgender-alt";
+          }
 
-        locationName.textContent = data[i].name;
-        city.textContent = data[i].city;
+        var html = `<div class="card">
+          <div class="card-content">
+          <div class="content">
+          <h3>${locationName}</h3>
+          <p id="address">${address}</p>
+          <p id="distance">${distance}</p>
+          <i id="icons" class="${accessible}"></i>
+          <i id="icons" class="${baby}"></i>
+          <i id="icons" class="${gender}"></i>`
 
-        dataField.append(locationName);
-        dataField.append(city);
+          console.log(html);
+          dataField.innerHTML += html;
 
-        // locationArray.lat = data[i].latitude;
-        // locationArray.long = data[i].longitude;
-        // console.log(locationArray);
-
-        let locationObject = {'lat': data[i].latitude, 'long': data[i].longitude};
-            locationArray.push(locationObject)
       }
-      console.log(locationArray);
+      return html;
+      
     });
 }
 
+// button event listener
 fetchButton.addEventListener("click", getApi);
