@@ -13,6 +13,10 @@ body {
     background-color: var(--cadetblue);
 }
 
+label {
+    color: var(--ivory);
+}
+
 .custom-navbar {
     background-color: var(--cadetblue);
     color: var(--ivory);
