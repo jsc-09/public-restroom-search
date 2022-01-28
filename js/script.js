@@ -20,13 +20,15 @@ function getApi() {
         var city = document.createElement("p");
         var icons = document.createElement("i");
         let distanceAway = filteredResults[i].distance;
-
-        if (filteredResults[i].accessible === true) {
-          var accessible = "fab fa-accessible-icon";
-        } if (filteredResults[i].changing_table === true) {
-          var baby = " fas fa-baby";
-        } if (filteredResults[i].unisex === true) {
-          var gender = " fas fa-transgender-alt";
+        var accessible = '<i></i>';
+        var baby = '<i></i>';
+        var gender = '<i></i>';
+        if (filteredResults[i].accessible) {
+          accessible = '<i class="fab fa-accessible-icon"></i>';
+        } if (filteredResults[i].changing_table) {
+          baby = '<i class="fas fa-baby"></i>';
+        } if (filteredResults[i].unisex) {
+          gender = '<i class="fas fa-transgender-alt"></i>';
         }
 
         let cardmarkup = `
@@ -39,9 +41,9 @@ function getApi() {
                                 <p>${"Distance Away: " + Math.round(distanceAway * 100) / 100 + ' miles'}</p>
                               </div>
                               <div class="column">
-                                <i id="icons" class="${accessible}"></i>
-                                <i id="icons" class="${baby}"></i>
-                                <i id="icons" class="${gender}"></i>
+                              ${accessible}
+                              ${baby}
+                              ${gender}
                               </div >
                             </div >
                             <div class="row">
@@ -58,7 +60,6 @@ function getApi() {
         restroomInfo.innerHTML += cardmarkup;
 
       }
-      // console.log(locationArray);
 
     });
 }

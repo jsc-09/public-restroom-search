@@ -29,7 +29,6 @@ function createMarkers(array) {
 }
 function successLocation(position) {
     setupMap([-117.379186, 33.194634]);
-    getApi();
 }
 function errorLocation() {
     setupMap([-2.34, 53.48]);
