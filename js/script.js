@@ -20,33 +20,30 @@ function getApi() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       let restroomInfo = document.getElementById('restroomCard');
       restroomInfo.innerHTML = "";
-      for (var i = 0; i < 5; i++) {
-        console.log(data[i])
+      let filteredResults = filterResults(data);
+      for (var i = 0; i < filteredResults.length; i++) {
         var locationName = document.createElement("h3");
         var city = document.createElement("p");
         var icons = document.createElement("i");
         let distanceAway = data[i].distance;
 
-      
-
-        if (data[i].accessible === true) {
+        if (filteredResults[i].accessible === true) {
           icons.append("Wheel chairs accessible")
-        } else if (data[i].changing_table === true) {
+        } else if (filteredResults[i].changing_table === true) {
           icons.append("Changing table")
-        } else if (data[i].unisex === true) {
+        } else if (filteredResults[i].unisex === true) {
           icons.append("Unisex")
         }
         
         let cardmarkup = `
                     <div class="card-content has-background-light mt-1">
                     <div class="content">
-                        <h4>${data[i].name}</h4>
+                        <h4>${filteredResults[i].name}</h4>
                         <div class="row columns">
                         <div class="column">
-                        <p>${data[i].street + ", " + data[i].city}</p>
+                        <p>${filteredResults[i].street + ", " + filteredResults[i].city}</p>
                         <p>${"Distance Away: " + Math.round(distanceAway*100)/100 + ' miles'}</p>
                         </div>
                         <div class="column">
@@ -57,15 +54,15 @@ function getApi() {
 
                         </div>
                         <div class="row">
-                        <p>${"<strong>Directions: </strong> " + data[i].directions}</p>
-                        <p>${"<strong>Comments: </strong> " + data[i].comments}</p>
+                        <p>${"<strong>Directions: </strong> " + filteredResults[i].directions}</p>
+                        <p>${"<strong>Comments: </strong> " + filteredResults[i].comments}</p>
                         </div>
                     </div>
                     </div>
         `
 
-        locationName.textContent = data[i].name;
-        city.textContent = data[i].city;
+        locationName.textContent = filteredResults[i].name;
+        city.textContent = filteredResults[i].city;
 
         //        dataField.append(locationName);
         //        dataField.append(city);
@@ -74,13 +71,13 @@ function getApi() {
         // locationArray.long = data[i].longitude;
         // console.log(locationArray);
 
-        let locationObject = { 'lat': data[i].latitude, 'long': data[i].longitude };
+        let locationObject = { 'lat': filteredResults[i].latitude, 'long': filteredResults[i].longitude };
         locationArray.push(locationObject)
 
         restroomInfo.innerHTML += cardmarkup;
 
       }
-      console.log(locationArray);
+      // console.log(locationArray);
 
     });
 }
