@@ -46,7 +46,8 @@ async function getApi(coordinates) {
     locationArray.push(locationObject)
 
     restroomInfo.innerHTML += cardmarkup;
-
+    const marker = new mapboxgl.Marker().setLngLat([filteredResults[i].longitude, filteredResults[i].latitude]);
+    marker.addTo(map);
   }
   // console.log(locationArray);
   // const el = document.createElement('div');
@@ -56,8 +57,7 @@ async function getApi(coordinates) {
   //     .setLngLat([filteredResults[i].longitude, filteredResults[i].latitude])
   //     // .setPopup(popup) // sets a popup on this marker
   //     .addTo(map);
-  const marker = new mapboxgl.Marker().setLngLat([filteredResults[i].longitude, filteredResults[i].latitude]);
-  marker.addTo(map);
+
 };
 
 // button event listener
