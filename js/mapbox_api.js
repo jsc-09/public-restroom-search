@@ -33,8 +33,9 @@ function setupMap(center) {
     const nav = new mapboxgl.NavigationControl();
     map.addControl(nav);
 }
-function successLocation() {
-    setupMap([-2.34, 53.48]);
+function successLocation(position) {
+    setupMap([position.coords.longitude, position.coords.latitude]);
+    getApi([position.coords.longitude, position.coords.latitude]);
 }
 function errorLocation() {
     setupMap([-2.34, 53.48]);
