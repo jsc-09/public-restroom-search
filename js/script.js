@@ -1,10 +1,11 @@
-let fetchButton = document.querySelector(".fetch-button");
-let locationArray = [];
+//let fetchButton = document.querySelector(".fetch-button");
+//let locationArray = [];
 
 // fetch request
-async function getApi() {
+async function getApi(coordinates) {
+  console.log(typeof coordinates);
   let requestUrl =
-    "https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=1&per_page=10&offset=0&lat=33.194634&lng=-117.379186";
+    `https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=1&per_page=10&offset=0&lat=${coordinates[1]}&lng=${coordinates[0]}`;
 
   let response = await fetch(requestUrl);
   let data = await response.json();
@@ -48,7 +49,16 @@ async function getApi() {
 
   }
   // console.log(locationArray);
-
+  // const el = document.createElement('div');
+  // el.addClass('marker');
+  // const popup = new mapboxgl.Popup({ offset: 25 }).setText(filteredResults[i].name)
+  // new mapboxgl.Marker()
+  //     .setLngLat([filteredResults[i].longitude, filteredResults[i].latitude])
+  //     // .setPopup(popup) // sets a popup on this marker
+  //     .addTo(map);
+  const marker = new mapboxgl.Marker().setLngLat([filteredResults[i].longitude, filteredResults[i].latitude]);
+  marker.addTo(map);
 };
+
 // button event listener
-fetchButton.addEventListener("click", getApi);
+// fetchButton.addEventListener("click", getApi);

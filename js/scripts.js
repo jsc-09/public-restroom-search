@@ -261,7 +261,6 @@ function filterResults(results) {
   let ada = $('#ADA').is(':checked');
   let unisex = $('#unisex').is(':checked');
   let changingTable = $('#changingTable').is(':checked');
-  console.log(changingTable);
   let filteredResults = [];
   if (ada && unisex && changingTable) {
     for (let i = 0; i < results.length; i++) {

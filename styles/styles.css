@@ -30,6 +30,20 @@ label {
     border-color: var(--ivory);
 }
 
+.mapSize {
+    width: 63vw;
+    height: 100%;
+}
+
+.geoCoder {
+    height: 3rem;
+    width: 100%;
+}
+
+.mapboxgl-ctrl-geocoder {
+    min-width: 100%;
+}
+
 .custom-map {
     background-color: var(--ivory);
 }
