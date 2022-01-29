@@ -115,6 +115,12 @@ img {
     width: 4em;
 }
 
+#restroomCard {
+    overflow-y: scroll;
+    height: 1000px;
+}
+
+
 
 /*MOBILE*/
 @media screen and (max-width: 768px) {
