@@ -1,7 +1,3 @@
-//let fetchButton = document.querySelector(".fetch-button");
-//let locationArray = [];
-
-// fetch request
 async function getApi(coordinates) {
   console.log(typeof coordinates);
   let requestUrl =
@@ -83,20 +79,8 @@ async function getApi(coordinates) {
     )
     .addTo(map);
   };
-  // console.log(locationArray);
-  // const el = document.createElement('div');
-  // el.addClass('marker');
-  // const popup = new mapboxgl.Popup({ offset: 25 }).setText(filteredResults[i].name)
-  // new mapboxgl.Marker()
-  //     .setLngLat([filteredResults[i].longitude, filteredResults[i].latitude])
-  //     // .setPopup(popup) // sets a popup on this marker
-  //     .addTo(map);
 };
 $('#map').on('click', function(e) {
   let index = e.target.id.charAt(e.target.id.length - 1);
   console.log(index);
-
 })
-
-// button event listener
-// fetchButton.addEventListener("click", getApi);

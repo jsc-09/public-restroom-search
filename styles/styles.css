@@ -26,10 +26,6 @@ label {
     color: var(--cadetblue);
 }
 
-.custom-search {
-    border-color: var(--ivory);
-}
-
 .mapSize {
     width: 63vw;
     height: 100%;
@@ -67,12 +63,6 @@ text-align: center;
 font-family: 'Open Sans', sans-serif;
 }
 
-.fetch-button {
-    background-color: var(--sage);
-    color: var(--kombugreen);
-    border-color: var(--cadetblue);
-}
-
 .custom-card-container {
     background-color: var(--cadetblue);
     color: var(--kombugreen);
@@ -82,6 +72,7 @@ font-family: 'Open Sans', sans-serif;
 .custom-card {
     background-color: var(--ivory);
     color: var(--cadetblue);
+    border-radius: 2px;
 }
 
 .custom-modal-background {
@@ -96,6 +87,10 @@ font-family: 'Open Sans', sans-serif;
 h1 {
     font-family: 'Bangers', cursive;
     font-size: 250%;
+}
+
+.modal-header h1{
+    position: relative;
 }
 
 h2 {
@@ -140,12 +135,19 @@ p {
     color: var(--cadetblue);
 }
 
-p.showmore {
-    font-size: 70%;
+footer p { 
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 100%;
+    line-height: 100%;
+    color: var(--ivory);
 }
 
 img {
     width: 4em;
+}
+
+.modal-header img {
+    float: left;
 }
 
 #restroomCard {
@@ -165,6 +167,22 @@ img {
         height: 100%;
     }
 
+    .custom-map {
+        width: 100%;
+        height: 60vh;
+    }
+    h2{
+        font-family: 'Fira Sans Condensed', sans-serif;
+        font-size: 160%;
+        font-weight: 400;
+        line-height: 95%;
+        color: var(--kombugreen);
+        margin-bottom: 0.5em;
+    }
+    label {
+        color: var(--kombugreen);
+        margin-top: 1em;
+    }
 }
 
 /*TABLET & DESKTOP*/
