@@ -5,8 +5,8 @@ let map;
 let geocoder1;
 let geocoder2;
 
- navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {enableHighAccuracy: true});
-function setupMap(center, array) {
+navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {enableHighAccuracy: true});
+function setupMap(center) {
     map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
@@ -32,25 +32,14 @@ function setupMap(center, array) {
          })
     const nav = new mapboxgl.NavigationControl();
     map.addControl(nav);
-    // map.addControl(geocoder);
-    // const marker = new mapboxgl.Marker().setLngLat([-117.379186, 33.194634]);
-    //     marker.addTo(map);
 }
-function createMarkers(array) {
-    for (let i = 0; i < array.length; i++) {
-        const marker = new mapboxgl.Marker()
-        .setLngLat([-117.379186, 33.194634])
-        .setPopup(popup)
-        .addTo(map);
-    }
-}
-function successLocation(position) {
-    setupMap([-117.379186, 33.194634]);
+function successLocation() {
+    setupMap([-2.34, 53.48]);
 }
 function errorLocation() {
     setupMap([-2.34, 53.48]);
 }
-$('#map').on('click', function(e) {
+$('.mapboxgl-canvas').on('click', function(e) {
     console.log(e.target);
 });
   

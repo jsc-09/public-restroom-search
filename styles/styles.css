@@ -11,7 +11,6 @@
 
 body {
     background-color: var(--cadetblue);
-    height: 100vh;
 }
 
 label {
@@ -45,6 +44,25 @@ label {
     background-color: var(--ivory);
 }
 
+.marker {
+    background-image: url('red-pin.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.mapboxgl-popup {
+    max-width: 200px;
+}
+  
+.mapboxgl-popup-content {
+text-align: center;
+font-family: 'Open Sans', sans-serif;
+}
+
 .custom-card-container {
     background-color: var(--cadetblue);
     color: var(--kombugreen);
@@ -61,7 +79,7 @@ label {
     background-color: var(--cadetblue);
 }
 
-#custom-modal-container {
+.custom-modal-container {
     background-color: var(--ebony);
     color: var(--cadetblue);
 }
@@ -80,15 +98,23 @@ h2 {
     font-size: 160%;
     font-weight: 400;
     line-height: 95%;
-    color: var(--ivory); 
+    color: var(--ivory);
 }
 
-#search-header {
+#modal-h2 {
     font-family: 'Fira Sans Condensed', sans-serif;
     font-size: 160%;
     font-weight: 400;
-    line-height: 95%;
-    color: var(--ivory); 
+    color: var(--cadetblue);
+
+}
+
+.modal-header img {
+    float: left;
+}
+
+.modal-header h1{
+    position: relative;
 }
 
 h3 {
@@ -129,6 +155,8 @@ img {
     height: 1000px;
 }
 
+
+
 /*MOBILE*/
 @media screen and (max-width: 768px) {
     .restroomsearch {
@@ -138,6 +166,7 @@ img {
         width: 100%;
         height: 100%;
     }
+
     .custom-map {
         width: 100%;
         height: 60vh;
