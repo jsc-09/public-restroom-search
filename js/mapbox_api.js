@@ -27,7 +27,7 @@ function setupMap(center, array) {
             getApi(e.result.center);
         })
          geocoder2.on('result', function(e) {
-             $('.modal').classList.removeClass('is-active')
+             $('.modal').removeClass('is-active')
              getApi(e.result.center);
          })
     const nav = new mapboxgl.NavigationControl();

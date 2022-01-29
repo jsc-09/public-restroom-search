@@ -11,6 +11,7 @@
 
 body {
     background-color: var(--cadetblue);
+    height: 100vh;
 }
 
 label {
@@ -93,7 +94,6 @@ h2 {
     font-weight: 400;
     line-height: 95%;
     color: var(--ivory); 
-
 }
 
 #modal-h2 {
