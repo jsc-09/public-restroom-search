@@ -27,15 +27,15 @@
         <!--RESTROOM SEARCH / LIST CONTAINER / DESKTOP -->
         <div class="column is-one-third m-1 restroomsearch custom-sidebar">
             <div class="field block">
-                <h2 class="mb-1">Find the nearest public restrooms</h2>
-                <div id="geoCoder-1" class="geocoder"></div>
-                <label class="checkbox">
+                <h2 class="mb-1" id="search-header">Find the nearest public restrooms</h2>
+                <div id="geoCoder-1" class="geocoder mt-2"></div>
+                <label class="checkbox m-2">
                     <input id="ADA" type="checkbox">ADA</label>
                 </label>
-                <label class="checkbox">
+                <label class="checkbox m-2">
                     <input id="unisex" type="checkbox">Gender Neutral</label>
                 </label>
-                <label class="checkbox">
+                <label class="checkbox m-2">
                     <input id="changingTable" type="checkbox">Changing Table</label>
                 </label>
             </div>
@@ -54,17 +54,19 @@
 
     <div id="modal custom-modal-container" class="modal">
         <div class="modal-background custom-modal-background"></div>
-        <div class="modal-content">
-            <div class="box">
+        <div class="modal-card">
+            <section class="modal-card-body">
                 <div class="field block">
                     <div class="modal-header"><img src="images/toiletpaper.png"><h1>RESTROOM HUNTERS</h1></div>
                     <h2 id="modal-h2">Find the nearest public restrooms</h2>
                     <div id="geoCoder-2" class="geocoder"></div>
                 </div>
-            </div>
+            </section>
         </div>
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
+    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js" ></script>
@@ -72,5 +74,4 @@
     <script src="js/scripts.js" defer></script>
     <script src="js/script.js" defer></script>
 </body>
-
 </html>

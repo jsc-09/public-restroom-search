@@ -4,12 +4,12 @@ window.addEventListener('resize', function(){
   if (window.innerWidth < 768){
     $(document).ready(function(){
       $(".modal").addClass("is-active");
-      $("#lanuchModal").click(function() {
-        $(".modal").addClass("is-active");  
-      });
+//      $("#launchModal").click(function() {
+//        $(".modal").addClass("is-active");  
+//      });
       
-      $(".modal-close").click(function() {
-         $(".modal").removeClass("is-active");
+     $(".modal-close").click(function() {
+       $(".modal").removeClass("is-active");
       });
       
       $("#closebtn").click(function() {

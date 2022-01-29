@@ -17,19 +17,19 @@ function setupMap(center, array) {
             accessToken: mapboxgl.accessToken,
             mapboxgl: mapboxgl
         })
-        // geocoder2 = new MapboxGeocoder({
-        //     accessToken: mapboxgl.accessToken,
-        //     mapboxgl: mapboxgl
-        // })
+         geocoder2 = new MapboxGeocoder({
+             accessToken: mapboxgl.accessToken,
+             mapboxgl: mapboxgl
+         })
         document.getElementById('geoCoder-1').appendChild(geocoder1.onAdd(map));
-        // document.getElementById('geoCoder-2').appendChild(geocoder2.onAdd(map));
+         document.getElementById('geoCoder-2').appendChild(geocoder2.onAdd(map));
         geocoder1.on('result', function(e) {
             getApi(e.result.center);
         })
-        // geocoder2.on('result', function(e) {
-        //     $('.modal').classList.removeClass('is-active')
-        //     getApi(e.result.center);
-        // })
+         geocoder2.on('result', function(e) {
+             $('.modal').classList.removeClass('is-active')
+             getApi(e.result.center);
+         })
     const nav = new mapboxgl.NavigationControl();
     map.addControl(nav);
     // map.addControl(geocoder);
