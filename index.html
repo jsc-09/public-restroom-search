@@ -19,40 +19,36 @@
 </head>
 
 <body>
-    <div class="flex-container">
-        <!--NAV BAR/HEADER-->
-        <div class="flex-element navbar-brand notification custom-navbar is-justify-content-center"><img src="images/toiletpaper.png">
-            <h1>RESTROOM HUNTERS</h1>
-        </div>
-        <div class="flex-element content columns is-full m-2">
-            <!--RESTROOM SEARCH / LIST CONTAINER / DESKTOP -->
-            <div class=" flex-element column is-one-third m-1 restroomsearch custom-sidebar">
-                <div class="field block">
-                    <h2 class="mb-1">Find the nearest public restrooms</h2>
-                    <div id="geoCoder-1" class="geocoder"></div>
-                    <!-- <input class="input is-normal custom-search" type="text" placeholder="Your Location">
-                    <button class="button is-fullwidth mt-2 fetch-button">Search</button> -->
-                    <label class="checkbox">
-                        <input id="ADA" type="checkbox">ADA</label>
-                    </label>
-                    <label class="checkbox">
-                        <input id="unisex" type="checkbox">Gender Neutral</label>
-                    </label>
-                    <label class="checkbox">
-                        <input id="changingTable" type="checkbox">Changing Table</label>
-                    </label>
-                </div>
-    
-                <div class="card custom-card-container" id="restroomCard">
-                </div>
-                <!--
-                <button class="button is-primary is-light mt-2 is-hovered ">Show More Restrooms</button>-->
+    <!--NAV BAR/HEADER-->
+    <div class="navbar-brand notification custom-navbar is-justify-content-center"><img src="images/toiletpaper.png">
+        <h1>RESTROOM HUNTERS</h1>
+    </div>
+    <div class="content columns is-full m-2">
+        <!--RESTROOM SEARCH / LIST CONTAINER / DESKTOP -->
+        <div class="column is-one-third m-1 restroomsearch custom-sidebar">
+            <div class="field block">
+                <h2 class="mb-1">Find the nearest public restrooms</h2>
+                <div id="geoCoder-1" class="geocoder"></div>
+                <label class="checkbox">
+                    <input id="ADA" type="checkbox">ADA</label>
+                </label>
+                <label class="checkbox">
+                    <input id="unisex" type="checkbox">Gender Neutral</label>
+                </label>
+                <label class="checkbox">
+                    <input id="changingTable" type="checkbox">Changing Table</label>
+                </label>
             </div>
 
-            <!--MAP CONTAINER-->
-            <div class="column is-two-third m-1 custom-map">
-                <div id='map' class="mapsize"></div>
+            <div class="card custom-card-container" id="restroomCard">
             </div>
+            <!--
+            <button class="button is-primary is-light mt-2 is-hovered ">Show More Restrooms</button>-->
+        </div>
+
+        <!--MAP CONTAINER-->
+        <div class="column is-two-third m-1 custom-map">
+            <div id='map' class="mapsize"></div>
         </div>
     </div>
 
@@ -75,8 +71,6 @@
     <script src="./js/mapbox_api.js" defer></script>
     <script src="js/scripts.js" defer></script>
     <script src="js/script.js" defer></script>
-    <!-- <script src="js/scripts.js" defer></script>
-    <script src="js/script.js" defer></script> -->
 </body>
 
 </html>

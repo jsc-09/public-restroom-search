@@ -11,28 +11,15 @@
 
 body {
     background-color: var(--cadetblue);
-    height: 100vh;
 }
 
 label {
     color: var(--ivory);
 }
-.flex-container {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-   justify-content: center;
-}
-.content {
-    flex: 1;
-    height: 95vh;
-}
 
 .custom-navbar {
     background-color: var(--cadetblue);
     color: var(--ivory);
-    height: 5vh;
 }
 
 .restroomsearch {
@@ -43,13 +30,19 @@ label {
     border-color: var(--ivory);
 }
 
+.mapSize {
+    width: 63vw;
+    height: 100%;
+}
+
 .geoCoder {
     height: 3rem;
     width: 100%;
 }
+
 .mapboxgl-ctrl-geocoder {
     min-width: 100%;
-    }
+}
 
 .custom-map {
     background-color: var(--ivory);
@@ -158,8 +151,4 @@ img {
         width: 63vw;
         height: 100%;
     }
-}
-.mapSize {
-    width: 63vw;
-    height: 100%;
 }
