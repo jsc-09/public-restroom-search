@@ -2,14 +2,10 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic2xhdGVybWNhcmRsZSIsImEiOiJja3lxNHJ6aWowZ2k1M
 
 var locationArray = [];
 let map;
-const geocoder = new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken,
-    mapboxgl: mapboxgl
-})
+let geocoder1;
+let geocoder2;
 
  navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {enableHighAccuracy: true});
-//setupMap([-117.379186, 33.194634]);
-setGeoCoder();
 function setupMap(center, array) {
     map = new mapboxgl.Map({
         container: 'map',
@@ -17,16 +13,26 @@ function setupMap(center, array) {
         center: center,
         zoom: 12
         });
+        geocoder1 = new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl
+        })
+        // geocoder2 = new MapboxGeocoder({
+        //     accessToken: mapboxgl.accessToken,
+        //     mapboxgl: mapboxgl
+        // })
+        document.getElementById('geoCoder-1').appendChild(geocoder1.onAdd(map));
+        // document.getElementById('geoCoder-2').appendChild(geocoder2.onAdd(map));
+        geocoder1.on('result', function(e) {
+            getApi(e.result.center);
+        })
+        // geocoder2.on('result', function(e) {
+        //     $('.modal').classList.removeClass('is-active')
+        //     getApi(e.result.center);
+        // })
     const nav = new mapboxgl.NavigationControl();
     map.addControl(nav);
-    map.addControl(geocoder);
-    const el = document.createElement('div');
-    el.id = 'marker';
-    const popup = new mapboxgl.Popup({ offset: 25 }).setText('Construction on the Washington Monument began in 1848.')
-    new mapboxgl.Marker(el)
-        .setLngLat([-117.379186, 33.194634])
-        .setPopup(popup) // sets a popup on this marker
-        .addTo(map);
+    // map.addControl(geocoder);
     // const marker = new mapboxgl.Marker().setLngLat([-117.379186, 33.194634]);
     //     marker.addTo(map);
 }
@@ -44,12 +50,6 @@ function successLocation(position) {
 function errorLocation() {
     setupMap([-2.34, 53.48]);
 }
-function setGeoCoder() {
-    map.addControl(geocoder);
-}
-geocoder.on('result', function(e) {
-    console.log(e.result.center[0]);
-})
 $('#map').on('click', function(e) {
     console.log(e.target);
 });
