@@ -27,10 +27,6 @@ label {
     color: var(--cadetblue);
 }
 
-.custom-search {
-    border-color: var(--ivory);
-}
-
 .mapSize {
     width: 63vw;
     height: 100%;
@@ -49,12 +45,6 @@ label {
     background-color: var(--ivory);
 }
 
-.fetch-button {
-    background-color: var(--sage);
-    color: var(--kombugreen);
-    border-color: var(--cadetblue);
-}
-
 .custom-card-container {
     background-color: var(--cadetblue);
     color: var(--kombugreen);
@@ -64,6 +54,7 @@ label {
 .custom-card {
     background-color: var(--ivory);
     color: var(--cadetblue);
+    border-radius: 2px;
 }
 
 .custom-modal-background {
@@ -80,6 +71,10 @@ h1 {
     font-size: 250%;
 }
 
+.modal-header h1{
+    position: relative;
+}
+
 h2 {
     font-family: 'Fira Sans Condensed', sans-serif;
     font-size: 160%;
@@ -94,21 +89,6 @@ h2 {
     font-weight: 400;
     line-height: 95%;
     color: var(--ivory); 
-}
-
-#modal-h2 {
-    font-family: 'Fira Sans Condensed', sans-serif;
-    font-size: 160%;
-    font-weight: 400;
-    color: var(--cadetblue);
-}
-
-.modal-header img {
-    float: left;
-}
-
-.modal-header h1{
-    position: relative;
 }
 
 h3 {
@@ -129,12 +109,19 @@ p {
     color: var(--cadetblue);
 }
 
-p.showmore {
-    font-size: 70%;
+footer p { 
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 100%;
+    line-height: 100%;
+    color: var(--ivory);
 }
 
 img {
     width: 4em;
+}
+
+.modal-header img {
+    float: left;
 }
 
 #restroomCard {
@@ -153,7 +140,19 @@ img {
     }
     .custom-map {
         width: 100%;
-        height: 50vh;
+        height: 60vh;
+    }
+    h2{
+        font-family: 'Fira Sans Condensed', sans-serif;
+        font-size: 160%;
+        font-weight: 400;
+        line-height: 95%;
+        color: var(--kombugreen);
+        margin-bottom: 0.5em;
+    }
+    label {
+        color: var(--kombugreen);
+        margin-top: 1em;
     }
 }
 
