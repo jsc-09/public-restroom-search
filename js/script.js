@@ -19,6 +19,7 @@ async function getApi(coordinates) {
     let baby = (filteredResults[i].changing_table) ? "fas fa-baby" : "";
     let gender = (filteredResults[i].unisex) ? "fas fa-transgender-alt" : "";
     let cardId = 'card-' + [i];
+    let navigationURL = `https://www.google.com/maps/dir/${coordinates[1]},${coordinates[0]}/${filteredResults[i].latitude},${filteredResults[i].longitude}/`;
 
     let cardmarkup = `
                     <div id=${cardId} class="card-content custom-card mt-1">
@@ -28,6 +29,7 @@ async function getApi(coordinates) {
                               <div class="column">
                                 <p>${filteredResults[i].street + ", " + filteredResults[i].city}</p>
                                 <p>${"Distance Away: " + Math.round(distanceAway * 100) / 100 + ' miles'}</p>
+                                <p><a href="${navigationURL}" target="_blank">Navigate here</a></p>
                               </div>
                               <div class="column">
                                 <i class="${accessible}"></i>
@@ -67,6 +69,7 @@ async function getApi(coordinates) {
     type: 'FeatureCollection',
     features: pinList
   };
+  
   for (const feature of geojson.features) {
     // create a HTML element for each feature
     const el = document.createElement('div');
