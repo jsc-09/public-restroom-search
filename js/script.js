@@ -1,5 +1,6 @@
+let markerList;
+
 async function getApi(coordinates) {
-  console.log(typeof coordinates);
   let requestUrl =
     `https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=1&per_page=10&offset=0&lat=${coordinates[1]}&lng=${coordinates[0]}`;
 
@@ -9,6 +10,8 @@ async function getApi(coordinates) {
   restroomInfo.innerHTML = "";
   let filteredResults = filterResults(data);
   let pinList = [];
+
+  markerList = [];
 
   for (let i = 0; i < filteredResults.length; i++) {
     let distanceAway = filteredResults[i].distance;
@@ -53,7 +56,9 @@ async function getApi(coordinates) {
       },
       'properties': {
         'title': filteredResults[i].name,
-        'id': 'marker-' + [i]
+        'id': 'marker-' + [i],
+        'address': "address: " + filteredResults[i].street + ", " + filteredResults[i].city,
+        'distance': "Distance Away: " + Math.round(distanceAway * 100) / 100 + ' miles'
       }
     };
     pinList.push(pinItem);
@@ -67,20 +72,22 @@ async function getApi(coordinates) {
     const el = document.createElement('div');
     el.id = feature.properties.id;
     el.className = 'marker';
-  
+    
+    let navigationURL = `https://www.google.com/maps/dir/${coordinates[1]},${coordinates[0]}/${feature.geometry.coordinates[1]},${feature.geometry.coordinates[0]}/`;
     // make a marker for each feature and add to the map
-    new mapboxgl.Marker(el)
+    let marker = new mapboxgl.Marker(el)
     .setLngLat(feature.geometry.coordinates)
     .setPopup(
       new mapboxgl.Popup({ offset: 25 }) // add popups
         .setHTML(
-          `<h3>${feature.properties.title}</h3>`
+          `<h3>${feature.properties.title}</h3>
+          <p>${feature.properties.address}</p>
+          <p>${feature.properties.distance}</p>
+          <p><a href="${navigationURL}" target="_blank">Navigate here</a></p>
+          `
         )
     )
     .addTo(map);
+    markerList.push(marker);
   };
 };
-$('#map').on('click', function(e) {
-  let index = e.target.id.charAt(e.target.id.length - 1);
-  console.log(index);
-})

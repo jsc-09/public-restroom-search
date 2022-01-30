@@ -38,9 +38,6 @@ window.addEventListener('load', function () {
       });
     });
   }
-  else {
-    $('.modal').classList.removeClass('is-active')
-  }
 });
 
 // filter the restroom results based on user selected options
