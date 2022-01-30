@@ -91,3 +91,17 @@ function filterResults(results) {
   } else { filteredResults = results; }
   return (filteredResults);
 }
+
+
+//FOOTER CONTENT
+let jokes = [
+  {joke: "What did the poop say to the fart? Wow, you really blow me away!"},
+  {joke: "What do the starship Enterprise and toilet paper have in common? They both circle Uranus looking for Klingons."},
+  {joke: "Did you hear about that film called constipated? It never came out!"},
+  {joke: "I don't want to hear any more toilet puns. They always stink!"}
+]
+let currentJoke = jokes[Math.floor(Math.random()*jokes.length)]
+console.log(currentJoke);
+
+let featuredJoke = document.getElementById('featured-joke');
+featuredJoke.innerText = currentJoke.joke;
