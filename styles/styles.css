@@ -69,7 +69,20 @@ font-family: 'Open Sans', sans-serif;
     border-color: var(--cadetblue);
 }
 
+.cardLink {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%; width: 100%;
+    z-index: 10;
+}
+
+.navigationLink {
+    position: absolute;
+    z-index: 20;
+}
+
 .custom-card {
+    position: relative;
     background-color: var(--ivory);
     color: var(--cadetblue);
     border-radius: 2px;

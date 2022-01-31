@@ -1,6 +1,4 @@
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2xhdGVybWNhcmRsZSIsImEiOiJja3lxNHJ6aWowZ2k1Mm9qamR1czF1OWJhIn0.s_73OZ4ECgZnF9CLwtWg2w';
-
-var locationArray = [];
 let map;
 let geocoder1;
 let geocoder2;
@@ -40,9 +38,6 @@ function successLocation(position) {
 function errorLocation() {
     setupMap([-2.34, 53.48]);
 }
-$('.mapboxgl-canvas').on('click', function(e) {
-    console.log(e.target);
-});
   
   
   
