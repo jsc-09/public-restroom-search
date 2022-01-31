@@ -1,4 +1,5 @@
 let popupList;
+let locationList;
 
 async function getApi(coordinates) {
   if (popupList != undefined && popupList.length < 1) {
@@ -12,6 +13,7 @@ async function getApi(coordinates) {
   let filteredResults = filterResults(data);
   let pinList = [];
   popupList = [];
+  locationList = [];
 
   for (let i = 0; i < filteredResults.length; i++) {
     let distanceAway = filteredResults[i].distance;
@@ -44,6 +46,9 @@ async function getApi(coordinates) {
           </div>
         </div >
       </div >`
+    
+    let location = [filteredResults[i].longitude, filteredResults[i].latitude]
+    locationList.push(location);
     // generate a list of popups to tie into the markers later
     let popUp = new mapboxgl.Popup({ offset: 25 }) // add popups
       .setHTML(
@@ -86,6 +91,18 @@ async function getApi(coordinates) {
     .setPopup(popupList[i])
     .addTo(map);
   };
+  console.log('test');
+  let bounds = new mapboxgl.LngLatBounds(
+    locationList[0],
+    locationList[0]
+    );
+  // Extend the 'LngLatBounds' to include every coordinate in the bounds result.
+  for (let i = 0; i < locationList.length; i++) {
+  bounds.extend(locationList[i]);
+  }
+  map.fitBounds(bounds, {
+  padding: 20
+  });
 };
 
 // function to close any open popups. use before opening a new one or when generating new search results
