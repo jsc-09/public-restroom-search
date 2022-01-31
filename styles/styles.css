@@ -9,8 +9,13 @@
     --sage: #C2C1A5;
 }
 
+html {
+    background-color: var(--cadetblue);
+}
+
 body {
     background-color: var(--cadetblue);
+    height: 100vh;
 }
 
 label {
@@ -148,11 +153,16 @@ p {
     color: var(--cadetblue);
 }
 
+footer {
+    background-color: var(--cadetblue);
+}
+
 footer p { 
     font-family: 'Fira Sans Condensed', sans-serif;
     font-size: 100%;
     line-height: 100%;
     color: var(--ivory);
+    font-style: oblique;
 }
 
 img {
@@ -167,8 +177,6 @@ img {
     overflow-y: scroll;
     height: 1000px;
 }
-
-
 
 /*MOBILE*/
 @media screen and (max-width: 768px) {

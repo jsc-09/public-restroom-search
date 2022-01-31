@@ -105,7 +105,7 @@ async function getApi(coordinates) {
     .addTo(map);
     markerList.push(marker);
     
-    };
+  };
 
   // If there's an initial share location position, add a marker for it and add it to the marker list for later removal
   if (sharedPosition.length > 0) {
