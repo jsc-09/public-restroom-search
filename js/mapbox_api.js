@@ -25,6 +25,7 @@ function setupMap(center) {
         document.getElementById('geoCoder-1').appendChild(geocoder1.onAdd(map));
          document.getElementById('geoCoder-2').appendChild(geocoder2.onAdd(map));
         geocoder1.on('result', function(e) {
+            $('.modal').removeClass('is-active')
             sharedPosition = [];
             getApi(e.result.center);
         })
