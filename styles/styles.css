@@ -15,7 +15,7 @@ html {
 
 body {
     background-color: var(--cadetblue);
-    height: 100vh;
+    height: 100%;
 }
 
 label {
@@ -97,7 +97,7 @@ font-family: 'Open Sans', sans-serif;
     background-color: var(--cadetblue);
 }
 
-.custom-modal-container {
+#custom-modal-container {
     background-color: var(--ebony);
     color: var(--cadetblue);
 }
@@ -163,6 +163,7 @@ footer p {
     line-height: 100%;
     color: var(--ivory);
     font-style: oblique;
+    word-wrap: break-word;
 }
 
 img {
@@ -204,15 +205,21 @@ img {
         color: var(--kombugreen);
         margin-top: 1em;
     }
+    img {
+        width: 3em;
+    }
 }
 
 /*TABLET & DESKTOP*/
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
     .modal {
         display: none;
     }
     .mapsize {
         width: 63vw;
         height: 100%;
+    }
+    #search-header {
+        color: var(--ivory);
     }
 }

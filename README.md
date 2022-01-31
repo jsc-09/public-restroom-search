@@ -15,7 +15,7 @@ SO we bring to you Restroom Hunter!
 ```
 AS an urban, suburban, and rural explorer
 I NEED to locate restrooms frequently, and more times than not, quickly
-SO THAT I can always have a ==back up plan== when nature calls
+SO THAT I can always have a back up plan when nature calls
 ```
 
 ## Functionality
