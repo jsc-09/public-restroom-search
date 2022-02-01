@@ -32,8 +32,12 @@ label {
 }
 
 .mapSize {
-    width: 63vw;
-    height: 100%;
+    width: 50vw;
+    
+}
+
+.mapboxgl-canvas-container {
+    height: calc(100vh - 7rem);
 }
 
 .geoCoder {
@@ -176,7 +180,6 @@ img {
 
 #restroomCard {
     overflow-y: scroll;
-    height: 1000px;
 }
 
 /*MOBILE*/
@@ -217,7 +220,13 @@ img {
     }
     .mapsize {
         width: 63vw;
-        height: 100%;
+        height: calc(100vh - 14rem)!important;
+    }
+    .custom-map {
+        height: calc(100vh - 13rem)!important;
+    }
+    #restroomCard {
+        height: calc(100vh - 21.5rem)!important;
     }
     #search-header {
         color: var(--ivory);

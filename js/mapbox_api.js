@@ -6,6 +6,9 @@ let geocoder2;
 let sharedPosition = [];
 // #endregion
 
+let windowHeight = $(window).height();
+console.log(windowHeight);
+
 navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {enableHighAccuracy: true});
 function setupMap(center) {
     map = new mapboxgl.Map({
@@ -36,6 +39,10 @@ function setupMap(center) {
          })
     const nav = new mapboxgl.NavigationControl();
     map.addControl(nav);
+    map.on('idle', function() {
+        $('.mapboxgl-canvas').removeAttr('style');
+        map.resize();
+    });
 }
 function successLocation(position) {
     setupMap([position.coords.longitude, position.coords.latitude]);
@@ -43,7 +50,7 @@ function successLocation(position) {
     getApi([position.coords.longitude, position.coords.latitude]);
 }
 function errorLocation() {
-    setupMap([-2.34, 53.48]);
+    setupMap([-117.2340, 32.8803]);
 }
   
   
