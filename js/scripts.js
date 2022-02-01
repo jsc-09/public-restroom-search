@@ -1,5 +1,4 @@
 //Display location search modal on mobile (screen size < 768)
-
 function loadModal() {
   if (window.innerWidth < 768) {
     $(document).ready(function () {
@@ -18,7 +17,7 @@ function loadModal() {
     });
   }
   else {
-    $('.modal').classList.removeClass('is-active')
+    $('.modal').removeClass('is-active')
   }
 }
 window.addEventListener('resize', loadModal)
@@ -85,7 +84,6 @@ let jokes = [
   {joke: "I don't want to hear any more toilet puns. They always stink!"}
 ]
 let currentJoke = jokes[Math.floor(Math.random()*jokes.length)]
-console.log(currentJoke);
 
 let featuredJoke = document.getElementById('featured-joke');
 featuredJoke.innerText = currentJoke.joke;

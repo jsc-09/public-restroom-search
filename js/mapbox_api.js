@@ -6,34 +6,34 @@ let geocoder2;
 let sharedPosition = [];
 // #endregion
 
-navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {enableHighAccuracy: true});
+navigator.geolocation.getCurrentPosition(successLocation, errorLocation, { enableHighAccuracy: true });
 function setupMap(center) {
     map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
         center: center,
         zoom: 12
-        });
-        geocoder1 = new MapboxGeocoder({
-            accessToken: mapboxgl.accessToken,
-            mapboxgl: mapboxgl
-        })
-         geocoder2 = new MapboxGeocoder({
-             accessToken: mapboxgl.accessToken,
-             mapboxgl: mapboxgl
-         })
-        document.getElementById('geoCoder-1').appendChild(geocoder1.onAdd(map));
-         document.getElementById('geoCoder-2').appendChild(geocoder2.onAdd(map));
-        geocoder1.on('result', function(e) {
-            $('.modal').removeClass('is-active')
-            sharedPosition = [];
-            getApi(e.result.center);
-        })
-         geocoder2.on('result', function(e) {
-             sharedPosition = [];
-             getApi(e.result.center);
-             $('.modal').removeClass('is-active')
-         })
+    });
+    geocoder1 = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
+    })
+    geocoder2 = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
+    })
+    document.getElementById('geoCoder-1').appendChild(geocoder1.onAdd(map));
+    document.getElementById('geoCoder-2').appendChild(geocoder2.onAdd(map));
+    geocoder1.on('result', function (e) {
+        $('.modal').removeClass('is-active')
+        sharedPosition = [];
+        getApi(e.result.center);
+    })
+    geocoder2.on('result', function (e) {
+        sharedPosition = [];
+        getApi(e.result.center);
+        $('.modal').removeClass('is-active')
+    })
     const nav = new mapboxgl.NavigationControl();
     map.addControl(nav);
 }
@@ -45,16 +45,15 @@ function successLocation(position) {
 function errorLocation() {
     setupMap([-2.34, 53.48]);
 }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
