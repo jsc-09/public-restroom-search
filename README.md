@@ -32,7 +32,7 @@ THEN I am presented with the location name, the address, an icon representation 
 
 The following image shows the web application's appearance and functionality:
 
-![The restroom app includes a search option, a list of nearby locations, and icons for ADA, Unisex, and  your Baby Changing needs.](./images/CPT2201312242-1262x619.gif)
+![The restroom app includes a search option, a list of nearby locations, and icons for ADA, Unisex, and  your Baby Changing needs.](./images/restroomhunters.gif)
 
 ## Assignments
 
