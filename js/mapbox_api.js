@@ -36,6 +36,10 @@ function setupMap(center) {
     })
     const nav = new mapboxgl.NavigationControl();
     map.addControl(nav);
+    map.on('idle', function() {
+        $('.mapboxgl-canvas').removeAttr('style');
+        map.resize();
+    });
 }
 function successLocation(position) {
     setupMap([position.coords.longitude, position.coords.latitude]);
@@ -43,7 +47,7 @@ function successLocation(position) {
     getApi([position.coords.longitude, position.coords.latitude]);
 }
 function errorLocation() {
-    setupMap([-2.34, 53.48]);
+    setupMap([-117.2340, 32.8803]);
 }
 
 

@@ -1,12 +1,9 @@
-//Display location search modal on mobile (screen size < 768)
+//selectively display the search button and possibly search modal on mobile resize (screen size < 768)
 function loadModal() {
   if (window.innerWidth < 768) {
-    $(document).ready(function () {
+    $('#search-button').attr('display', 'block');
+    // If the user hasn't searched anything, automatically open the search modal
       $(".modal").addClass("is-active");
-      $("#launchModal").click(function () {
-        $(".modal").addClass("is-active");
-      });
-
       $(".modal-close").click(function () {
         $(".modal").removeClass("is-active");
       });
@@ -14,14 +11,25 @@ function loadModal() {
       $("#closebtn").click(function () {
         $(".modal").removeClass("is-active");
       });
-    });
   }
   else {
+    $('#search-button').attr('display', 'none');
     $('.modal').removeClass('is-active')
   }
 }
-window.addEventListener('resize', loadModal)
-window.addEventListener('load', loadModal)
+window.addEventListener('resize', function () {
+  if (!searchDone) {
+    loadModal();
+  }
+});
+
+// When the search button is clicked, open the modal
+$('#search-button').on('click', function(e) {
+  e.preventDefault();
+  loadModal();
+});
+
+window.addEventListener('load', loadModal());
 
 // filter the restroom results based on user selected options
 function filterResults(results) {

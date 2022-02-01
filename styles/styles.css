@@ -32,8 +32,12 @@ label {
 }
 
 .mapSize {
-    width: 63vw;
-    height: 100%;
+    width: 50vw;
+    
+}
+
+.mapboxgl-canvas-container {
+    height: calc(100vh - 7rem);
 }
 
 .geoCoder {
@@ -107,6 +111,11 @@ h1 {
     font-size: 250%;
 }
 
+#search-button {
+    width: 100%;
+    height: 2rem;
+}
+
 .modal-header h1{
     position: relative;
 }
@@ -176,7 +185,6 @@ img {
 
 #restroomCard {
     overflow-y: scroll;
-    height: 1000px;
 }
 
 /*MOBILE*/
@@ -192,6 +200,9 @@ img {
     .custom-map {
         width: 100%;
         height: 60vh;
+    }
+    #search-button {
+        display: block;
     }
     h2{
         font-family: 'Fira Sans Condensed', sans-serif;
@@ -212,12 +223,21 @@ img {
 
 /*TABLET & DESKTOP*/
 @media screen and (min-width: 769px) {
+    #search-button {
+        display: none;
+    }
     .modal {
         display: none;
     }
     .mapsize {
         width: 63vw;
-        height: 100%;
+        height: calc(100vh - 14rem)!important;
+    }
+    .custom-map {
+        height: calc(100vh - 13rem)!important;
+    }
+    #restroomCard {
+        height: calc(100vh - 21.5rem)!important;
     }
     #search-header {
         color: var(--ivory);

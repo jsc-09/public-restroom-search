@@ -1,7 +1,7 @@
 let popupList;
 let locationList;
 let markerList;
-
+let searchDone = false;
 // asynchronous function that does all of the following:
 // 1. polls the refuge API for the top 10nresults based on the input lat/long location
 // 2. parses the results
@@ -10,6 +10,8 @@ let markerList;
 // 5. generates popups that attach to the map markers and can be triggered either by clicking the marker or the corresponding card
 // 6. zooms the map in on the results pins appropriately
 async function getApi(coordinates) {
+  // track that a search is complete so a screen size change no longer activates the search modal
+  searchDone = true;
   // loop through any existing popups and close them in case they're open
   if (popupList != undefined && popupList.length < 1) {
     closePopups();
