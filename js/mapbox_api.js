@@ -30,9 +30,9 @@ function setupMap(center) {
             getApi(e.result.center);
         })
          geocoder2.on('result', function(e) {
-             $('.modal').removeClass('is-active')
              sharedPosition = [];
              getApi(e.result.center);
+             $('.modal').removeClass('is-active')
          })
     const nav = new mapboxgl.NavigationControl();
     map.addControl(nav);

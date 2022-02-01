@@ -1,5 +1,6 @@
 //Display location search modal on mobile (screen size < 768)
-window.addEventListener('resize', function () {
+
+function loadModal() {
   if (window.innerWidth < 768) {
     $(document).ready(function () {
       $(".modal").addClass("is-active");
@@ -19,26 +20,9 @@ window.addEventListener('resize', function () {
   else {
     $('.modal').classList.removeClass('is-active')
   }
-});
-
-window.addEventListener('load', function () {
-  if (window.innerWidth < 768) {
-    $(document).ready(function () {
-      $(".modal").addClass("is-active");
-      $("#launchModal").click(function () {
-        $(".modal").addClass("is-active");
-      });
-
-      $(".modal-close").click(function () {
-        $(".modal").removeClass("is-active");
-      });
-
-      $("#closebtn").click(function () {
-        $(".modal").removeClass("is-active");
-      });
-    });
-  }
-});
+}
+window.addEventListener('resize', loadModal)
+window.addEventListener('load', loadModal)
 
 // filter the restroom results based on user selected options
 function filterResults(results) {
