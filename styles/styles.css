@@ -116,6 +116,12 @@ h1 {
     height: 2rem;
 }
 
+#filter-results {
+    width: 22%;
+    height: 1.7rem;
+    float: right;
+}
+
 .modal-header h1{
     position: relative;
 }
