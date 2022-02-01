@@ -32,7 +32,7 @@ THEN I am presented with the location name, the address, an icon representation 
 
 The following image shows the web application's appearance and functionality:
 
-![The restroom app includes a search option, a list of nearby locations, and icons for ADA, Unisex, and  your Baby Changing needs.](./Assets/06-server-side-apis-homework-demo.png)
+![The restroom app includes a search option, a list of nearby locations, and icons for ADA, Unisex, and  your Baby Changing needs.](./images/CPT2201312242-1262x619.gif)
 
 ## Assignments
 
@@ -42,34 +42,23 @@ The following image shows the web application's appearance and functionality:
 | Slater McArdle     | Mapbox API          |
 | Ian Nicholas       | Refuge Restroom API |
 
-## HTML
+## HTML, Styling
 
-### Issues
+[Bulma](https://bulma.io/)
 
-## Styling
-
-### Issues
-
-## JavaScript
-
-### Issues
+* Use Bulma as the CSS Wireframe with some custom styling
+* Added footer jokes just for the fun of it
 
 ## APIs
 
-[Mapbox API](https:https://www.mapbox.com/)
+[Mapbox API](https://docs.mapbox.com/mapbox-gl-js/api/)
 
-### Issues
+* Utilized map-box-gl.js API to generate interactive vector map, markers, popups, and geocoder search bars
 
 [Refuge Restrooms API](https://www.refugerestrooms.org/api/docs/)
 
-### Issues
+* Relied on refuge restrooms API to create list needed to fill all required and requested info
 
-#### getting the latitude and longitude from current location 
 
-## Screenshots
+ 
 
-## Live Links
-
-## Review
-
-## 
