@@ -1,32 +1,9 @@
 //selectively display the search button and possibly search modal on mobile resize (screen size < 768)
-window.addEventListener('resize', function () {
+function loadModal() {
   if (window.innerWidth < 768) {
     $('#search-button').attr('display', 'block');
     // If the user hasn't searched anything, automatically open the search modal
-    if (!searchDone) {
       $(".modal").addClass("is-active");
-    }
-  }
-  else {
-    $('#search-button').attr('display', 'none');
-    $('.modal').removeClass('is-active')
-  }
-});
-
-// When the search button is clicked, open the modal
-$('#search-button').on('click', function(e) {
-  e.preventDefault();
-  $(".modal").addClass("is-active");
-});
-
-window.addEventListener('load', function () {
-  if (window.innerWidth < 768) {
-    $(document).ready(function () {
-      $(".modal").addClass("is-active");
-      $("#launchModal").click(function () {
-        $(".modal").addClass("is-active");
-      });
-
       $(".modal-close").click(function () {
         $(".modal").removeClass("is-active");
       });
@@ -34,11 +11,25 @@ window.addEventListener('load', function () {
       $("#closebtn").click(function () {
         $(".modal").removeClass("is-active");
       });
-    });
-    // load the search button to activate the modal later if need be
-    $('#search-button').attr('display', 'block');
+  }
+  else {
+    $('#search-button').attr('display', 'none');
+    $('.modal').removeClass('is-active')
+  }
+}
+window.addEventListener('resize', function () {
+  if (!searchDone) {
+    loadModal();
   }
 });
+
+// When the search button is clicked, open the modal
+$('#search-button').on('click', function(e) {
+  e.preventDefault();
+  loadModal();
+});
+
+window.addEventListener('load', loadModal());
 
 // filter the restroom results based on user selected options
 function filterResults(results) {
