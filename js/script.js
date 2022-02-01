@@ -1,7 +1,7 @@
 let popupList;
 let locationList;
 let markerList;
-
+let searchDone = false;
 // asynchronous function that does all of the following:
 // 1. polls the refuge API for the top 10nresults based on the input lat/long location
 // 2. parses the results
@@ -129,6 +129,8 @@ async function getApi(coordinates) {
   map.fitBounds(bounds, {
   padding: 100
   });
+  // track that a search is complete so a screen size change no longer activates the search modal
+  searchDone = true;
 };
 
 // function to clear markers from previous results

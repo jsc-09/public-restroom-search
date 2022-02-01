@@ -1,24 +1,22 @@
-//Display location search modal on mobile (screen size < 768)
+//selectively display the search button and possibly search modal on mobile resize (screen size < 768)
 window.addEventListener('resize', function () {
   if (window.innerWidth < 768) {
-    $(document).ready(function () {
+    $('#search-button').attr('display', 'block');
+    // If the user hasn't searched anything, automatically open the search modal
+    if (!searchDone) {
       $(".modal").addClass("is-active");
-      $("#launchModal").click(function () {
-        $(".modal").addClass("is-active");
-      });
-
-      $(".modal-close").click(function () {
-        $(".modal").removeClass("is-active");
-      });
-
-      $("#closebtn").click(function () {
-        $(".modal").removeClass("is-active");
-      });
-    });
+    }
   }
   else {
-    $('.modal').classList.removeClass('is-active')
+    $('#search-button').attr('display', 'none');
+    $('.modal').removeClass('is-active')
   }
+});
+
+// When the search button is clicked, open the modal
+$('#search-button').on('click', function(e) {
+  e.preventDefault();
+  $(".modal").addClass("is-active");
 });
 
 window.addEventListener('load', function () {
@@ -37,6 +35,8 @@ window.addEventListener('load', function () {
         $(".modal").removeClass("is-active");
       });
     });
+    // load the search button to activate the modal later if need be
+    $('#search-button').attr('display', 'block');
   }
 });
 
@@ -101,7 +101,6 @@ let jokes = [
   {joke: "I don't want to hear any more toilet puns. They always stink!"}
 ]
 let currentJoke = jokes[Math.floor(Math.random()*jokes.length)]
-console.log(currentJoke);
 
 let featuredJoke = document.getElementById('featured-joke');
 featuredJoke.innerText = currentJoke.joke;

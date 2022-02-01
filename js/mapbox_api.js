@@ -6,9 +6,6 @@ let geocoder2;
 let sharedPosition = [];
 // #endregion
 
-let windowHeight = $(window).height();
-console.log(windowHeight);
-
 navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {enableHighAccuracy: true});
 function setupMap(center) {
     map = new mapboxgl.Map({
