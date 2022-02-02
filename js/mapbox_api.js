@@ -4,6 +4,7 @@ let map;
 let geocoder1;
 let geocoder2;
 let sharedPosition = [];
+let recentSearches = [];
 // #endregion
 
 navigator.geolocation.getCurrentPosition(successLocation, errorLocation, { enableHighAccuracy: true });
@@ -25,11 +26,16 @@ function setupMap(center) {
     document.getElementById('geoCoder-1').appendChild(geocoder1.onAdd(map));
     document.getElementById('geoCoder-2').appendChild(geocoder2.onAdd(map));
     geocoder1.on('result', function (e) {
+        console.log(e.result);
+        let recentSearch = {'place_name': e.result.place_name, 'location': e.result.center};
+        setLocalStorage(recentSearch);
         $('.modal').removeClass('is-active')
         sharedPosition = [];
         getApi(e.result.center);
     })
     geocoder2.on('result', function (e) {
+        let recentSearch = {'place_name': e.result.place_name, 'location': e.result.center};
+        setLocalStorage(recentSearch);
         sharedPosition = [];
         getApi(e.result.center);
         $('.modal').removeClass('is-active')
@@ -48,6 +54,31 @@ function successLocation(position) {
 }
 function errorLocation() {
     setupMap([-117.2340, 32.8803]);
+}
+
+function setLocalStorage(recent) {
+    recentSearches.unshift(recent);
+    if (recentSearches.length > 3) {
+        recentSearches.pop();
+    }
+    console.log(recentSearches);
+    localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
+}
+
+function populateDropdowns() {
+    $('.dropdown-content').empty();
+    console.log(recentSearches.length);
+    for (let i = 0; i < recentSearches.length; i++) {
+    console.log('test');
+        let searchText = recentSearches[i].place_name;
+        console.log(searchText);
+        let dropdownElement = `<a href="#" class="dropdown-item">${searchText}</a>`
+        $('.dropdown-content').append(dropdownElement);
+    }
+}
+
+function getLocalStorage() {
+    recentSearches = JSON.parse(localStorage.getItem('recentSearches'));
 }
 
 

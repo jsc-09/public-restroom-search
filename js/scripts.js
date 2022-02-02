@@ -121,5 +121,27 @@ $('#filter-results').on('click', function(e) {
 })
 
 // Add event listener to call the lod modal function on page load
-window.addEventListener('load', loadModal());
+window.addEventListener('load', function() {
+  populateDropdowns();
+  getLocalStorage();
+  loadModal();
+});
+
+$('.dropdown-content').on('click', function(e) {
+  let index = e.target.value;
+  let searchCoordinates = recentSearches[index].location;
+  getApi(searchCoordinates);
+})
+
+let dropdown = document.querySelector('.dropdown');
+dropdown.addEventListener('click', function(event) {
+    event.stopPropagation();
+    dropdown.classList.toggle('is-active');
+});
+
+let dropdownModal = document.querySelector('.dropdown-modal');
+dropdownModal.addEventListener('click', function(event) {
+    event.stopPropagation();
+    dropdownModal.classList.toggle('is-active');
+});
 // #endregion
