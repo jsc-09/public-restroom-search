@@ -37,22 +37,22 @@ function setupMap(center) {
       place_name: e.result.place_name,
       location: e.result.center,
     };
-    setLocalStorage(recentSearch);
     populateDropdowns();
     $(".modal").removeClass("is-active");
     sharedPosition = [];
     getApi(e.result.center);
+    setLocalStorage(recentSearch);
   });
   geocoder2.on("result", function (e) {
     let recentSearch = {
       place_name: e.result.place_name,
       location: e.result.center,
     };
-    setLocalStorage(recentSearch);
     populateDropdowns();
     sharedPosition = [];
     getApi(e.result.center);
     $(".modal").removeClass("is-active");
+    setLocalStorage(recentSearch);
   });
   const nav = new mapboxgl.NavigationControl();
   map.addControl(nav);
