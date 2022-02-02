@@ -106,6 +106,18 @@ font-family: 'Open Sans', sans-serif;
     color: var(--cadetblue);
 }
 
+.dropdown {
+    width: 100%;
+}
+
+.dropdown-trigger {
+    width: 100%;
+}
+
+.dropdown-trigger > button {
+    width: 100%;
+}
+
 h1 {
     font-family: 'Bangers', cursive;
     font-size: 250%;

@@ -132,8 +132,9 @@ $('.dropdown-content').on('click', function(e) {
   let index = e.target.text;
   // let searchCoordinates = recentSearches[index].location;
   let obj = recentSearches.find(o => o.place_name === index);
-  getApi(obj.location);
   map.flyTo({center: obj.location});
+  storedSearchLocation = obj.location;
+  getApi(obj.location);
 })
 
 let dropdown = document.querySelector('.dropdown');

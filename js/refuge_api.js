@@ -126,6 +126,14 @@ async function getApi(coordinates) {
         .addTo(map);
     markerList.push(marker);
   }
+  console.log(storedSearchLocation);
+  if (storedSearchLocation.length > 0) {
+    marker = new mapboxgl.Marker()
+        .setLngLat(storedSearchLocation)
+        .addTo(map);
+    markerList.push(marker);
+    storedSearchLocation = [];
+  }
 
   // create a bounding box to set the map view based on the results pins.
   // Start by setting both corners to the first result pin

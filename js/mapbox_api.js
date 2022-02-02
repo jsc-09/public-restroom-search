@@ -4,6 +4,7 @@ let map;
 let geocoder1;
 let geocoder2;
 let sharedPosition = [];
+let storedSearchLocation = [];
 let recentSearches = [];
 // #endregion
 
@@ -28,6 +29,7 @@ function setupMap(center) {
     geocoder1.on('result', function (e) {
         let recentSearch = {'place_name': e.result.place_name, 'location': e.result.center};
         setLocalStorage(recentSearch);
+        populateDropdowns();
         $('.modal').removeClass('is-active')
         sharedPosition = [];
         getApi(e.result.center);
@@ -35,6 +37,7 @@ function setupMap(center) {
     geocoder2.on('result', function (e) {
         let recentSearch = {'place_name': e.result.place_name, 'location': e.result.center};
         setLocalStorage(recentSearch);
+        populateDropdowns();
         sharedPosition = [];
         getApi(e.result.center);
         $('.modal').removeClass('is-active')
