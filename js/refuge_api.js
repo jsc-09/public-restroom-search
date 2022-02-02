@@ -93,6 +93,13 @@ async function getApi(coordinates) {
         `<h3>${filteredResults[i].name}</h3>
         <p>${filteredResults[i].street + ", " + filteredResults[i].city}</p>
         <p>${"Distance Away: " + Math.round(distanceAway * 100) / 100 + ' miles'}</p>
+        <p>${"<strong>Directions: </strong> " + filteredResults[i].directions}</p>
+        <p>${"<strong>Comments: </strong> " + filteredResults[i].comment}</p>
+        <div class="mb-2">
+          <i class="${accessible}"></i>
+          <i class="${baby}"></i>
+          <i class="${gender}"></i>
+        </div >
         <p><a href="${navigationURL}" target="_blank">Navigate here</a></p>
         `
       )
