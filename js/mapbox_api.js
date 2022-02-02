@@ -78,7 +78,11 @@ function errorLocation() {
 // Update the recent searches list with the most recent object at the top. remove any objects over the 3 most recent.
 // save the list to local storage
 function setLocalStorage(recent) {
-  recentSearches.unshift(recent);
+  if (recentSearches != null) {
+    recentSearches.unshift(recent);
+  } else {
+    recentSearches = [recent];
+  }
   if (recentSearches.length > 3) {
     recentSearches.pop();
   }
@@ -89,12 +93,14 @@ function setLocalStorage(recent) {
 // populate the recent search dropdown elements based on the recent search results
 function populateDropdowns() {
   $(".dropdown-content").empty();
-  for (let i = 0; i < recentSearches.length; i++) {
-    console.log("test");
-    let searchText = recentSearches[i].place_name;
-    console.log(searchText);
-    let dropdownElement = `<a href="#" value="${i}" class="dropdown-item">${searchText}</a>`;
-    $(".dropdown-content").append(dropdownElement);
+  if (recentSearches != null) {
+    for (let i = 0; i < recentSearches.length; i++) {
+      console.log("test");
+      let searchText = recentSearches[i].place_name;
+      console.log(searchText);
+      let dropdownElement = `<a href="#" value="${i}" class="dropdown-item">${searchText}</a>`;
+      $(".dropdown-content").append(dropdownElement);
+    }
   }
 }
 
@@ -102,5 +108,4 @@ function populateDropdowns() {
 function getLocalStorage() {
   let searches = localStorage.getItem("recentSearches");
   recentSearches = JSON.parse(searches);
-  console.log(recentSearches.place_name);
 }
