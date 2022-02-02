@@ -2,6 +2,7 @@ let popupList;
 let locationList;
 let markerList;
 let searchDone = false;
+let lastSearch = [];
 // asynchronous function that does all of the following:
 // 1. polls the refuge API for the top 10nresults based on the input lat/long location
 // 2. parses the results
@@ -10,6 +11,8 @@ let searchDone = false;
 // 5. generates popups that attach to the map markers and can be triggered either by clicking the marker or the corresponding card
 // 6. zooms the map in on the results pins appropriately
 async function getApi(coordinates) {
+  // store the incoming coordinates for later filtering
+  lastSearch = coordinates;
   // track that a search is complete so a screen size change no longer activates the search modal
   searchDone = true;
   // loop through any existing popups and close them in case they're open
@@ -90,6 +93,13 @@ async function getApi(coordinates) {
         `<h3>${filteredResults[i].name}</h3>
         <p>${filteredResults[i].street + ", " + filteredResults[i].city}</p>
         <p>${"Distance Away: " + Math.round(distanceAway * 100) / 100 + ' miles'}</p>
+        <p>${"<strong>Directions: </strong> " + filteredResults[i].directions}</p>
+        <p>${"<strong>Comments: </strong> " + filteredResults[i].comment}</p>
+        <div class="mb-2">
+          <i class="${accessible}"></i>
+          <i class="${baby}"></i>
+          <i class="${gender}"></i>
+        </div >
         <p><a href="${navigationURL}" target="_blank">Navigate here</a></p>
         `
       )
@@ -132,23 +142,3 @@ async function getApi(coordinates) {
   padding: 100
   });
 };
-
-// function to clear markers from previous results
-function clearMarkers() {
-  for (let i = 0; i < markerList.length; i++) {
-    markerList[i].remove();
-  }
-}
-
-// function to close any open popups. use before opening a new one or when generating new search results
-function closePopups() {
-  for (let i = 0; i < popupList.length; i++) {
-    popupList[i].remove();
-  }
-}
-
-// function called by result card anchor tags to trigger a popup on the corresponding map pin
-function triggerPopUp(index) {
-  closePopups();
-  popupList[index].addTo(map);
-}

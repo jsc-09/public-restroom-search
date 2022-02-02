@@ -17,19 +17,26 @@ function loadModal() {
     $('.modal').removeClass('is-active')
   }
 }
-window.addEventListener('resize', function () {
-  if (!searchDone) {
-    loadModal();
+
+// function to clear markers from previous results
+function clearMarkers() {
+  for (let i = 0; i < markerList.length; i++) {
+    markerList[i].remove();
   }
-});
+}
 
-// When the search button is clicked, open the modal
-$('#search-button').on('click', function(e) {
-  e.preventDefault();
-  loadModal();
-});
+// function to close any open popups. use before opening a new one or when generating new search results
+function closePopups() {
+  for (let i = 0; i < popupList.length; i++) {
+    popupList[i].remove();
+  }
+}
 
-window.addEventListener('load', loadModal());
+// function called by result card anchor tags to trigger a popup on the corresponding map pin
+function triggerPopUp(index) {
+  closePopups();
+  popupList[index].addTo(map);
+}
 
 // filter the restroom results based on user selected options
 function filterResults(results) {
@@ -83,7 +90,6 @@ function filterResults(results) {
   return (filteredResults);
 }
 
-
 //FOOTER CONTENT
 let jokes = [
   {joke: "What did the poop say to the fart? Wow, you really blow me away!"},
@@ -95,3 +101,25 @@ let currentJoke = jokes[Math.floor(Math.random()*jokes.length)]
 
 let featuredJoke = document.getElementById('featured-joke');
 featuredJoke.innerText = currentJoke.joke;
+
+// #region EVENT LISTENERS
+// Add an event listener to selectively add/remove the modal
+window.addEventListener('resize', function () {
+  if (!searchDone) {
+    loadModal();
+  }
+});
+
+// When the search button is clicked, open the modal
+$('#search-button').on('click', function(e) {
+  e.preventDefault();
+  loadModal();
+});
+
+$('#filter-results').on('click', function(e) {
+  getApi(lastSearch);
+})
+
+// Add event listener to call the lod modal function on page load
+window.addEventListener('load', loadModal());
+// #endregion
