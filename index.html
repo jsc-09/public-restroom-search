@@ -31,7 +31,9 @@
         <div class="column is-one-third m-1 restroomsearch custom-sidebar">
             <div class="field block">
                 <h2 class="mb-1" id="search-header">Find the nearest public restrooms</h2>
+                <!-- mapbox smart search geocoder -->
                 <div id="geoCoder-1" class="geocoder mt-2"></div>
+                <!-- filter checkboxes -->
                 <label class="checkbox m-2">
                     <input id="ADA" type="checkbox"> ADA</label>
                 </label>
@@ -41,6 +43,9 @@
                 <label class="checkbox m-2">
                     <input id="changingTable" type="checkbox"> Changing Table</label>
                 </label>
+                <!-- button to update results based on filter checkboxes -->
+                <button id="filter-results" class=" button mt-1">Filter</button>
+                <!-- dropdown with 3 most recent searches -->
                 <div class="dropdown mt-1">
                     <div class="dropdown-trigger">
                       <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
@@ -58,7 +63,6 @@
                       </div>
                     </div>
                   </div>
-                <button id="filter-results" class=" button mt-1">Filter</button>
             </div>
             <!--CARD CONTAINER-->
             <div class="card custom-card-container" id="restroomCard">
@@ -84,7 +88,9 @@
                         <h1>RESTROOM HUNTERS</h1>
                     </div>
                     <h2>Find the nearest public restrooms</h2>
+                    <!-- mapbox smart search geocoder -->
                     <div id="geoCoder-2" class="geocoder"></div>
+                    <!-- filter checkboxes -->
                     <label class="checkbox m-2">
                         <input id="ADA" type="checkbox"> ADA</label>
                     </label>
@@ -94,6 +100,7 @@
                     <label class="checkbox m-2">
                         <input id="changingTable" type="checkbox"> Changing Table</label>
                     </label>
+                    <!-- dropdown with 3 most recent searches -->
                     <div class="dropdown dropdown-modal mt-1">
                         <div class="dropdown-trigger">
                           <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">

@@ -1,20 +1,19 @@
 //selectively display the search button and possibly search modal on mobile resize (screen size < 768)
 function loadModal() {
   if (window.innerWidth < 768) {
-    $('#search-button').attr('display', 'block');
+    $("#search-button").attr("display", "block");
     // If the user hasn't searched anything, automatically open the search modal
-      $(".modal").addClass("is-active");
-      $(".modal-close").click(function () {
-        $(".modal").removeClass("is-active");
-      });
+    $(".modal").addClass("is-active");
+    $(".modal-close").click(function () {
+      $(".modal").removeClass("is-active");
+    });
 
-      $("#closebtn").click(function () {
-        $(".modal").removeClass("is-active");
-      });
-  }
-  else {
-    $('#search-button').attr('display', 'none');
-    $('.modal').removeClass('is-active')
+    $("#closebtn").click(function () {
+      $(".modal").removeClass("is-active");
+    });
+  } else {
+    $("#search-button").attr("display", "none");
+    $(".modal").removeClass("is-active");
   }
 }
 
@@ -40,13 +39,17 @@ function triggerPopUp(index) {
 
 // filter the restroom results based on user selected options
 function filterResults(results) {
-  let ada = $('#ADA').is(':checked');
-  let unisex = $('#unisex').is(':checked');
-  let changingTable = $('#changingTable').is(':checked');
+  let ada = $("#ADA").is(":checked");
+  let unisex = $("#unisex").is(":checked");
+  let changingTable = $("#changingTable").is(":checked");
   let filteredResults = [];
   if (ada && unisex && changingTable) {
     for (let i = 0; i < results.length; i++) {
-      if (results[i].accessible && results[i].unisex && results[i].changing_table) {
+      if (
+        results[i].accessible &&
+        results[i].unisex &&
+        results[i].changing_table
+      ) {
         filteredResults.push(results[i]);
       }
     }
@@ -86,66 +89,72 @@ function filterResults(results) {
         filteredResults.push(results[i]);
       }
     }
-  } else { filteredResults = results; }
-  return (filteredResults);
+  } else {
+    filteredResults = results;
+  }
+  return filteredResults;
 }
 
 //FOOTER CONTENT
 let jokes = [
-  {joke: "What did the poop say to the fart? Wow, you really blow me away!"},
-  {joke: "What do the starship Enterprise and toilet paper have in common? They both circle Uranus looking for Klingons."},
-  {joke: "Did you hear about that film called constipated? It never came out!"},
-  {joke: "I don't want to hear any more toilet puns. They always stink!"}
-]
-let currentJoke = jokes[Math.floor(Math.random()*jokes.length)]
+  { joke: "What did the poop say to the fart? Wow, you really blow me away!" },
+  {
+    joke: "What do the starship Enterprise and toilet paper have in common? They both circle Uranus looking for Klingons.",
+  },
+  {
+    joke: "Did you hear about that film called constipated? It never came out!",
+  },
+  { joke: "I don't want to hear any more toilet puns. They always stink!" },
+];
+let currentJoke = jokes[Math.floor(Math.random() * jokes.length)];
 
-let featuredJoke = document.getElementById('featured-joke');
+let featuredJoke = document.getElementById("featured-joke");
 featuredJoke.innerText = currentJoke.joke;
 
 // #region EVENT LISTENERS
 // Add an event listener to selectively add/remove the modal
-window.addEventListener('resize', function () {
+window.addEventListener("resize", function () {
   if (!searchDone) {
     loadModal();
   }
 });
 
 // When the search button is clicked, open the modal
-$('#search-button').on('click', function(e) {
+$("#search-button").on("click", function (e) {
   e.preventDefault();
   loadModal();
 });
 
-$('#filter-results').on('click', function(e) {
+$("#filter-results").on("click", function (e) {
   getApi(lastSearch);
-})
+});
 
 // Add event listener to call the lod modal function on page load
-window.addEventListener('load', function() {
+window.addEventListener("load", function () {
   getLocalStorage();
   populateDropdowns();
   loadModal();
 });
 
-$('.dropdown-content').on('click', function(e) {
-  console.log(e.target);
-  let index = e.target.text;
-  // let searchCoordinates = recentSearches[index].location;
-  let obj = recentSearches.find(o => o.place_name === index);
-  map.flyTo({center: obj.location});
-  storedSearchLocation = obj.location;
-  getApi(obj.location);
-})
-
-let dropdown = document.querySelector('.dropdown');
-dropdown.addEventListener('click', function(event) {
-    event.stopPropagation();
-    dropdown.classList.toggle('is-active');
+// Add event listener to call when the user selects a recent search to repeat
+$(".dropdown-content").on("click", function (e) {
+  let recentSearch = recentSearches.find((o) => o.place_name === e.target.text);
+  map.flyTo({ center: recentSearch.location });
+  storedSearchLocation = recentSearch.location;
+  getApi(recentSearch.location);
 });
 
-let dropdownModal = document.querySelector('.dropdown-modal');
-dropdownModal.addEventListener('click', function(event) {
-    event.stopPropagation();
-    dropdownModal.classList.toggle('is-active');
+// Add an event listener to toggle the dropdown on click for desktop
+let dropdown = document.querySelector(".dropdown");
+dropdown.addEventListener("click", function (event) {
+  event.stopPropagation();
+  dropdown.classList.toggle("is-active");
+});
+
+// Add an event listener to toggle the dropdown on click for mobile modal
+let dropdownModal = document.querySelector(".dropdown-modal");
+dropdownModal.addEventListener("click", function (event) {
+  event.stopPropagation();
+  dropdownModal.classList.toggle("is-active");
 });
 // #endregion
