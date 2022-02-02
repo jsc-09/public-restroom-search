@@ -122,15 +122,18 @@ $('#filter-results').on('click', function(e) {
 
 // Add event listener to call the lod modal function on page load
 window.addEventListener('load', function() {
-  populateDropdowns();
   getLocalStorage();
+  populateDropdowns();
   loadModal();
 });
 
 $('.dropdown-content').on('click', function(e) {
-  let index = e.target.value;
-  let searchCoordinates = recentSearches[index].location;
-  getApi(searchCoordinates);
+  console.log(e.target);
+  let index = e.target.text;
+  // let searchCoordinates = recentSearches[index].location;
+  let obj = recentSearches.find(o => o.place_name === index);
+  getApi(obj.location);
+  map.flyTo({center: obj.location});
 })
 
 let dropdown = document.querySelector('.dropdown');

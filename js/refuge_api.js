@@ -129,10 +129,7 @@ async function getApi(coordinates) {
 
   // create a bounding box to set the map view based on the results pins.
   // Start by setting both corners to the first result pin
-  let bounds = new mapboxgl.LngLatBounds(
-    locationList[0],
-    locationList[0]
-    );
+  let bounds = new mapboxgl.LngLatBounds(locationList[0],locationList[0]);
   // Extend the 'LngLatBounds' to include every coordinate in the bounds result.
   for (let i = 0; i < locationList.length; i++) {
   bounds.extend(locationList[i]);

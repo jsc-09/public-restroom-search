@@ -26,7 +26,6 @@ function setupMap(center) {
     document.getElementById('geoCoder-1').appendChild(geocoder1.onAdd(map));
     document.getElementById('geoCoder-2').appendChild(geocoder2.onAdd(map));
     geocoder1.on('result', function (e) {
-        console.log(e.result);
         let recentSearch = {'place_name': e.result.place_name, 'location': e.result.center};
         setLocalStorage(recentSearch);
         $('.modal').removeClass('is-active')
@@ -61,24 +60,25 @@ function setLocalStorage(recent) {
     if (recentSearches.length > 3) {
         recentSearches.pop();
     }
-    console.log(recentSearches);
+    console.log('here');
     localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
 }
 
 function populateDropdowns() {
     $('.dropdown-content').empty();
-    console.log(recentSearches.length);
     for (let i = 0; i < recentSearches.length; i++) {
     console.log('test');
         let searchText = recentSearches[i].place_name;
         console.log(searchText);
-        let dropdownElement = `<a href="#" class="dropdown-item">${searchText}</a>`
+        let dropdownElement = `<a href="#" value="${i}" class="dropdown-item">${searchText}</a>`
         $('.dropdown-content').append(dropdownElement);
     }
 }
 
 function getLocalStorage() {
-    recentSearches = JSON.parse(localStorage.getItem('recentSearches'));
+    let searches = localStorage.getItem('recentSearches')
+    recentSearches = JSON.parse(searches);
+    console.log(recentSearches.place_name);
 }
 
 
